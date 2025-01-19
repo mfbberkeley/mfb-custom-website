@@ -15,6 +15,10 @@ header {
     margin-right: 5vw;
 }
 
+header a:hover {
+    cursor: grab;
+}
+
 .text-green {
     color: #136F64
 }
