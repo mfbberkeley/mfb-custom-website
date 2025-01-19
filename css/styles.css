@@ -1,0 +1,804 @@
+/* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+* {
+    max-width: 100vw;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 20px 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+header a:hover {
+    cursor: grab;
+}
+
+#mfb-logo {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+nav ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease
+}
+
+nav ul a:hover {
+    color: #136F64;
+    text-decoration: none;
+}
+
+nav ul li {
+    padding: 5px;
+    margin-left: 10px;
+    font-family: "Poppins"
+}
+
+/* Hamburger icon */
+#hamburger-icon {
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+}
+
+#hamburger-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* styling for when hamburger icon is clicked */
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2 {
+    opacity: 0;
+}
+
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    background-color: #136F64;
+
+    width: 80vw;
+    height: 30vh;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100vh - 50px);
+    width: 100%;
+    padding: 0;
+}
+
+.mobile-menu a {
+    color: white;
+    font-family: 'Poppins';
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.mobile-menu li {
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%; 
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #136F64;
+    margin-bottom: 0px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.footer-section-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0px 80px 0px 80px;
+    margin-bottom: 60px;
+}
+
+.footer-icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px 0px 5px;
+}
+
+.footer-section-1 p {
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0 0;
+}
+
+.footer-section-2 p {
+    padding: 0px 80px 0px 80px;
+    color: white;
+    margin-bottom: 0px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* -----------------------------------------
+   Page 1 - Home Page Styles
+   ----------------------------------------- */
+/* --- Section 1 (Title) --- */
+.home-s1 {
+    background-image: url('../images/home/section1background.jpeg');
+    background-size: cover; 
+    background-position: center;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.home-s1-title {
+    width: 100vw;
+    margin-top: 40px;
+    
+}
+
+.home-s1-title p {
+    color: white;
+    font-family: 'Poppins', serif;
+    font-weight: 700;
+    font-size: 6vw;
+    text-align: center;
+    margin: 0 0;
+    
+}
+
+.home-s1-tagline {
+    width: 100vw;
+    margin-top: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+.home-s1-tagline p {
+    color: white;
+    font-family: 'Roboto', serif;
+    font-size: 2vw;
+    text-align: center;
+    font-weight: 500;
+    margin: 0 0;
+}
+
+/* Join Us Button */
+.home-s1-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.home-s1-button-container a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 1.7vw;
+    background-color: #136F64;
+    border-radius: 50px;
+    padding: 1.0vw 3.5vw;
+
+    transition: color 0.3s ease;
+}
+
+.home-s1-button-container a:hover {
+    color: #062623;
+}
+
+/* --- Section 2 (Statistics Section) --- */
+.home-s2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 20px;
+    place-items: center;
+}
+  
+.home-s2-square {
+    background-color: #EFEFEF;
+    height: 15vw;
+    width: 20vw;
+    color: #136F64;
+    font-family: 'Roboto', serif;
+    font-weight: 700;
+
+    padding: 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.home-s2-square-number {
+    font-size: 6vw;
+    margin: 0 0;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: baseline;
+
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+}
+
+.home-s2-square-animated-number {
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-right: 4px;
+    line-height: 1; 
+}
+
+.home-s2-square-suffix {
+    font-size: 6vw; 
+}
+
+/* For squares other than the first one (without "K") */
+.home-s2-square .home-s2-square-number:not(:first-child) .home-s2-square-suffix {
+    display: none;
+}
+
+.home-s2-square-text {
+    font-size: 1.5vw;
+}
+
+/* --- Section 3 (Who We Are) --- */
+  .home-s3-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    padding: 0 0;
+  }
+
+  .home-s3-title p {
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    color: #136F64;
+    font-size: 50px;
+
+    margin: 0 0;
+  }
+
+  .home-s3-content {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .home-s3-content p {
+    font-family: 'Roboto', serif;
+    font-weight: 400;
+    font-size: 20px;
+
+    max-width: 40%;
+
+    line-height: 2;
+    margin: 0;
+    flex: 1;
+  }
+
+  .home-s3-content img {
+    flex: 1;
+    max-width: 40%; 
+    height: auto; 
+    object-fit: cover;
+  }
+
+/* --- Section 4 (What We Do (Statistics)) --- */
+.home-s4 {
+    background-image: url('../images/home/berkeley.png');
+    background-size: cover; 
+    background-position: center;
+    width: 100vw;
+
+    height: 800px;
+}
+
+.home-s4-title {
+    display: flex;
+    justify-content: center;
+    padding: 0 0;
+}
+
+.home-s4-title p {
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    color: #136F64;
+    font-size: 50px;
+    margin-top: 40px;
+}
+
+.home-s4-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
+}
+  
+.home-s4-info-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    background: rgba(255, 255, 255, .8);
+
+    width: 25vw;
+    height: 550px;
+}
+
+.home-s4-info-item img {
+    width: 20vw;
+}
+
+.home-s4-info-item h2 {
+    font-family: 'Roboto';
+    font-weight: 600;
+    width: 20vw;
+    text-align: left;
+}
+
+.home-s4-info-item p {
+    font-family: 'Roboto';
+    font-size: 17px;
+    line-height: 1.5;
+    width: 20vw;
+    text-align: left;
+    margin-top: 0px;
+}
+
+/* --- Section 5 (Where We Work) --- */
+.home-s5-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 0 0;
+}
+
+.home-s5-title h1 {
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    color: #136F64;
+    font-size: 50px;
+    text-align: center;
+    margin: 0 0;
+}
+
+.home-s5-title h2 {
+    margin-top: 10px;
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+    font-size: 30px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.home-s5 .home-s5-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.home-s5 img {
+    width: 80vw;
+}
+
+.home-s4-carousel-container {
+    display: none;
+}
+
+@media only screen and (max-width: 768px) {
+    /* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+   /* Footer */
+   .footer-icons img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer-section-1 p {
+        font-size: 14px;
+    }
+
+    .footer-section-2 p {
+        font-size: 10px;
+    }
+
+    /* -----------------------------------------
+   Page 1 - Home Page Styles
+   ----------------------------------------- */
+    /* --- Section 1 (Title) --- */
+    .home-s1-title p {
+        font-size: 50px;
+    }
+
+    .home-s1-tagline {
+        margin-top: 20px;
+    }
+
+    .home-s1-tagline p {
+        font-size: 17px;
+    }
+
+    .home-s1-button-container {
+        margin-top: 60px;
+    }
+    
+    .home-s1-button-container a {
+        font-size: 15px;
+        padding: 10px 30px 10px 30px;
+    }
+
+    /* --- Section 2 (Statistics Section) --- */
+    /* Stats grid */
+    .home-s2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .home-s2-square {
+        height: 30vw;
+        width: 40vw;
+        gap: 15px;
+    }
+
+    .home-s2-square-number, .home-s2-square-suffix {
+        font-size: 14vw;
+    }
+
+    .home-s1 {
+        height: 80vw;
+    }
+
+    .home-s2-square-text {
+        font-size: 3vw;
+    }
+
+    /* --- Section 3 (Who We Are) --- */
+    .home-s3-title p {
+        font-size: 40px;
+    }
+
+    .home-s3-title {
+        margin-bottom: 0px;
+    }
+
+    .home-s3-content {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .home-s3-content p {
+        font-size: 15px;
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .home-s3-content img {
+        max-width: 70%;
+        margin-bottom: 20px;
+    }
+    
+    /* --- Section 4 (What We Do) --- */
+    .home-s4-info-container {
+        display: none;
+    }
+
+    .home-s4 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        padding-bottom: 60px;
+    }
+
+    .home-s4-slides-container {
+        width: 80vw;
+        object-fit: cover;
+        background-color: white;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .home-s4-carousel-container {
+        display: flex;
+        flex-direction: row;
+        font-family: 'Roboto';
+    }
+    
+    .home-s4-slide img {
+        width: 60vw;
+        object-fit: cover;
+        margin-bottom: 10px;
+    }
+
+    .home-s4-slide {
+        display: none;
+        opacity: 0;
+    }
+
+    .home-s4-slide h2 {
+        width: 60vw;
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .home-s4-slide p {
+        width: 60vw;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .home-s4-slide[data-active] {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        opacity: 1;
+    }
+
+    .home-s4-carousel-button {
+        background: none;
+        border: none;
+        color: white;
+    }
+
+    .home-s4-carousel-button:hover {
+        cursor:grab;
+    }
+
+    .home-s4-carousel-button img {
+        width: 50px;
+    }
+
+    /* --- Section 5 (Where We Work) --- */
+    .home-s5-title {
+        margin-top: 50px;
+    }
+    
+    .home-s5-title h1 {
+        font-size: 50px;
+    }
+    
+    .home-s5-title h2 {
+        margin-top: 10px;
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+    /* Footer */
+    footer {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .footer-icons img {
+        width: 15px;
+        height: 15px;
+        margin: 0 1px 0 1px;
+    }
+    
+    .footer-section-1 {
+        padding: 0px 30px 0px 30px;
+        margin: 0 0 20px 0;
+    }
+
+    .footer-section-1 p {
+        font-size: 9px;
+    }
+    
+    .footer-section-2 p {
+        padding: 0px 30px 0px 30px;
+        font-size: 7px;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    #hamburger-icon {
+        display: block;
+    }
+
+    /* Section 1 */
+    .home-s1-title {
+        margin-top: 0px;
+    }
+    .home-s1-title p {
+        font-size: 35px;
+    }
+
+    .home-s1-tagline {
+        margin-top: 10px;
+    }
+
+    .home-s1-tagline p {
+        font-size: 12px;
+    }
+
+    .home-s1-button-container {
+        margin-top: 25px;
+    }
+    
+    .home-s1-button-container a {
+        font-size: 12px;
+        padding: 10px 25px 10px 25px;
+    }
+
+    /* Stats grid */
+    .home-s2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .home-s2-square {
+        height: 30vw;
+        width: 40vw;
+        gap: 15px;
+    }
+
+    .home-s2-square-number, .home-s2-square-suffix {
+        font-size: 14vw;
+    }
+
+    .home-s1 {
+        height: 80vw;
+    }
+
+    .home-background-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .home-s3-title {
+        margin-bottom: 0px;
+    }
+
+    .home-3-title p {
+        font-size: 30px;
+    }
+
+    .home-s3-content {
+        flex-direction: column;
+        text-align: center;
+        margin-top: 10px;
+        padding: 0 0 0 0;
+    }
+
+    .home-s3-content p {
+        font-size: 15px;
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .home-s3-content img {
+        max-width: 70%;
+        margin-bottom: 20px;
+    }
+
+    .home-s4-info-item h2 {
+        font-size: 20px;
+    }
+    
+    .home-s4-info-item p {
+        font-size: 15px;
+    }
+
+    .home-s4-info-item {
+        height: 450px;
+    }
+
+    /* Section 4 */
+    .home-s4 {
+        padding-bottom: 0px;
+        height: 700px;
+    }
+
+    .home-s4-title p {
+        font-size: 30px;
+        margin-top: 0px;
+    }
+
+    /*-- Section 5 (Where We Work) --*/
+    .home-s5 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .home-s5-title {
+        margin-top: 10px;
+    }
+
+    .home-s5-title h1 {
+        font-size: 30px;
+    }
+
+    .home-s5-title h2 {
+        font-size: 15px;
+    }
+}

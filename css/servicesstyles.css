@@ -1,0 +1,573 @@
+/* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+* {
+    max-width: 100vw;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+header {
+    padding: 20px 20px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+header a:hover {
+    cursor: grab;
+}
+
+.services-s1 {
+    background-image: url('../images/services/services-background.png');
+    background-size: cover; 
+    background-position: center;
+    height: 60vh;
+    width: 100vw;
+}
+
+#mfb-logo {
+    width: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left: 50px;
+}
+
+nav ul {
+    list-style: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav ul a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease
+}
+
+nav ul a:hover {
+    color: #136F64;
+    text-decoration: none;
+}
+
+nav ul li {
+    padding: 5px;
+    margin-left: 10px;
+    font-family: "Poppins"
+}
+
+/* Hamburger icon */
+#hamburger-icon {
+    margin: auto 0;
+    display: none;
+    cursor: pointer;
+}
+
+#hamburger-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: white;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* styling for when hamburger icon is clicked */
+.open .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+    transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2 {
+    opacity: 0;
+}
+
+.open .bar3 {
+    -webkit-transform: rotate(45deg) translate(-6px, -8px);
+    transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.open .mobile-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+    height: 30vh;
+    list-style: none;
+    background-color: #136F64;
+}
+
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: calc(100vh - 50px);
+    width: 100%;
+    padding: 0;
+}
+
+.mobile-menu a {
+    color: white;
+    font-family: 'Poppins';
+    text-decoration: none;
+    transition: color 0.3s ease;
+    text-align: center;
+    width: 100%;
+}
+
+.mobile-menu li {
+    display: flex;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 100%; 
+}
+
+/* Footer */
+footer {
+    width: 100%;
+    background-color: #136F64;
+    margin-bottom: 0px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.footer-section-1 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 0px 80px 0px 80px;
+    margin-bottom: 60px;
+}
+
+.footer-icons {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-icons img {
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px 0px 5px;
+}
+
+.footer-section-1 p {
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 16px;
+    margin: 0 0;
+}
+
+.footer-section-2 p {
+    padding: 0px 80px 0px 80px;
+    color: white;
+    margin-bottom: 0px;
+    font-family: 'Roboto';
+    font-weight: 700;
+    font-size: 12px;
+}
+
+/* --- Section 1 (Title) --- */
+.services-s1-title {
+    width: 100vw;
+    margin-top: 40px;
+}
+
+.services-s1-title p {
+    color: white;
+    font-family: 'Poppins', serif;
+    font-weight: 700;
+    font-size: 70px;
+    text-align: center;
+    margin: 0 0;
+}
+
+/* --- Section 2 (Services Information) --- */
+.services-s2 {
+    text-align: center;
+}
+
+.services-s2-title {
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 100px;
+}
+
+    /* Section 2 - Flexbox Grid */
+.services-s2-info-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.services-s2-info-text-container {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+    align-items: center;
+    font-family: 'Roboto'
+}
+
+.services-s2-info-container h1 {
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 2vw;
+}
+
+.services-s2-info-container p {
+    margin: 0 0 0 0;
+    width: 80%;
+    font-size: 1.2vw;
+    line-height: 2;
+}
+
+.services-s2-info-container img {
+    width: 40vw;
+    height: auto;
+}
+
+/* --- Section 3 (Areas of Focus) --- */
+.services-subtitle-container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.services-subtitle-container p {
+    color:#136F64;
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 50px;
+    margin-bottom: 0px;
+}
+
+    /* Section 3 Grid */
+.services-s3-square-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 50px;
+    place-items: center;
+}
+
+.services-s3-square {
+    background-color: #EFEFEF;
+    height: 23vw;
+    width: 20vw;
+    font-family: 'Roboto', serif;
+    font-weight: 600;
+
+    padding: 0 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    text-align: center;
+
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.services-s3-content img {
+    width: 7vw;
+    height: auto;
+}
+
+.services-s3-content h1 {
+    font-size: 1.5vw;
+}
+
+.services-s3-text {
+    font-weight: 400;
+    font-size: 1.2vw;
+}
+
+/* --- Section 4 (Past Clients) --- */
+.services-s4-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.services-s4-image-container img {
+    width: 90vw;
+    margin-top: 20px;
+}
+
+/* --- Section 5 (Business Inquiries) --- */
+.services-s5-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 60px;
+}
+
+.services-s5-button-container a {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    font-family: 'Roboto';
+    font-weight: 600;
+    font-size: 2vw;
+    background-color: #136F64;
+    border-radius: 50px;
+    padding: 1vw 3vw;
+
+    margin-top: 20px;
+
+    transition: color 0.3s ease;
+}
+
+.services-s5-button-container a:hover {
+    color: #062623; /* Change the text color on hover */
+}
+
+@media only screen and (max-width: 768px) {
+    /* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+    /* Footer */
+    .footer-icons img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .footer-section-1 p {
+        font-size: 14px;
+    }
+
+    .footer-section-2 p {
+        font-size: 10px;
+    }
+
+    /* --- Section 1 (Title) --- */
+    .services-s1-title {
+        margin-top: 20px;
+    }
+
+    .services-s1 {
+        height: 50vw;
+    }
+
+    .services-s1-title p {
+        font-size: 10vw;
+    }
+
+    /* --- Section 2 (Services Information) --- */
+    .services-s2 {
+        align-items: center;
+    }
+
+    .services-s2-title {
+        margin-bottom: 0px;
+        width: 80%; 
+        margin: 40px auto 0; 
+    }
+
+    .text {
+        font-size: 3vw;
+    }
+
+    .services-s2-info-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+    }
+    
+    .services-s2-info-text-container {
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        align-items: center;
+    }
+
+    .services-s2-info-container h1 {
+        font-family: 'Roboto';
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    /* Reorder elements for mobile view */
+    .services-s2-info-container:nth-of-type(2) .services-s2-info-text-container {
+        order: 2;
+    }
+
+    .services-s2-info-container:nth-of-type(2) img {
+        order: 1;
+    }
+    
+    .services-s2-info-container p {
+        margin: 0 0 0 0;
+        width: 100%;
+        font-size: 14px;
+        line-height: 2;
+    }
+    
+    .services-s2-info-container img {
+        width: 80vw;
+        height: auto;
+    }
+
+    /* --- Section 3 (Areas of Focus) --- */
+    .services-subtitle-container p {
+        font-size: 40px;
+    }
+
+        /* Section 3 Grid */
+    .services-s3-square-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        width: fit-content; 
+        margin: 50px auto 0;
+    }
+
+    .services-s3-square {
+        height: 35vw;
+        width: 30vw;
+        gap: 15px;
+    }
+
+    .services-s3-content h1 {
+        font-size: 3vw;
+    }
+    
+    .services-s3-text {
+        font-weight: 400;
+        font-size: 2vw;
+    }
+
+    /* --- Section 5 (Business Inquiries) --- */
+    .services-s5-button-container {
+        margin-top: 20px;
+        margin-bottom: 60px;
+    }
+    
+    .services-s5-button-container a {
+        font-size: 3vw;
+        padding: 1.5vw 3.5vw;
+    
+        margin-top: 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* -----------------------------------------
+   Global Styles
+   ----------------------------------------- */
+    header nav {
+        display: none;
+    }
+
+    #hamburger-icon {
+        display: block;
+    }
+
+    /* Footer */
+    footer {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .footer-icons img {
+        width: 15px;
+        height: 15px;
+        margin: 0 1px 0 1px;
+    }
+    
+    .footer-section-1 {
+        padding: 0px 30px 0px 30px;
+        margin: 0 0 20px 0;
+    }
+
+    .footer-section-1 p {
+        font-size: 9px;
+    }
+    
+    .footer-section-2 p {
+        padding: 0px 30px 0px 30px;
+        font-size: 7px;
+    }
+
+    /* --- Section 1 (Title) --- */
+    .services-s1 {
+        height: 50vw;
+    }
+
+    .services-s1-title {
+        margin-top: 0.2vh;
+    }
+
+    .services-s1-title p {
+        font-size: 10vw;
+    }
+
+    /* --- Section 2 (Services Information) --- */
+    .services-s2-title {
+        font-size: 14px;
+        text-align: center;
+
+        width: 80%;           
+        margin: 40px auto 0;  
+    }
+
+    /* --- Section 3 (Areas of Focus) --- */
+    .services-subtitle-container p {
+        font-size: 30px;
+    }
+
+        /* Section 3 Grid */
+    .services-s3-square-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        width: fit-content; 
+        margin: 50px auto 0;
+    }
+
+    .services-s3-square {
+        height: 35vw;
+        width: 30vw;
+        gap: 15px;
+    }
+
+    .services-s3-content h1 {
+        font-size: 3vw;
+    }
+    
+    /* --- Section 5 (Business Inquiries) --- */
+    .services-s5-button-container {
+        margin-top: 0px;
+        margin-bottom: 60px;
+    }
+    
+    .services-s5-button-container a {
+        font-size: 4vw;
+        padding: 1.5vw 3.5vw;
+        margin-top: 20px;
+    }
+}
