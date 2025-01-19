@@ -569,27 +569,30 @@ footer {
         align-items: center;
         flex-direction: column;
 
-        padding-bottom: 60px;
-    }
+        padding-bottom: 100px;
+        padding-top: 50px;
 
-    .home-s4-slides-container {
-        width: 80vw;
-        object-fit: cover;
-        background-color: white;
-        padding-top: 25px;
-        padding-bottom: 25px;
-        padding-left: 25px;
-        padding-right: 25px;
+
     }
 
     .home-s4-carousel-container {
         display: flex;
         flex-direction: row;
+        justify-content: space-evenly;
         font-family: 'Roboto';
+    }
+
+    .home-s4-slides-container {
+        width: 85vw;
+        object-fit: cover;
+        background-color: rgba(255, 255, 255, .8);;
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-top: 0px;
     }
     
     .home-s4-slide img {
-        width: 60vw;
+        width: 90%;
         object-fit: cover;
         margin-bottom: 10px;
     }
@@ -617,7 +620,6 @@ footer {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
         opacity: 1;
     }
 
@@ -771,11 +773,28 @@ footer {
     .home-s4 {
         padding-bottom: 0px;
         height: 700px;
+
+        padding-top: 0px;
     }
 
     .home-s4-title p {
         font-size: 30px;
         margin-top: 0px;
+    }
+
+    .home-s4-slides-container {
+        width: 80vw;
+        object-fit: cover;
+        background-color: rgba(255, 255, 255, .8);;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin-top: 0px;
+    }
+    
+    .home-s4-slide img {
+        width: 90%;
+        object-fit: cover;
+        margin-bottom: 10px;
     }
 
     /*-- Section 5 (Where We Work) --*/
