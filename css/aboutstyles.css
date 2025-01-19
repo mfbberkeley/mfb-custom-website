@@ -129,7 +129,7 @@ nav ul li {
 
 /* Title Section */
 .title-section {
-    background-image: url('images/about/about-background.png');
+    background-image: url('../images/about/about-background.png');
     background-size: cover;
     background-position: center;
     height: 60vh;

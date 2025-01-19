@@ -129,7 +129,7 @@ nav ul li {
 
 /* Title Section */
 .title-section {
-    background-image: url('images/team/team-background.png');
+    background-image: url('../images/team/team-background.png');
     background-size: cover;
     background-position: center;
     height: 60vh;
@@ -273,7 +273,7 @@ nav ul li {
 .exec-portrait-1 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/rohan-dondeti.jpg'); 
+    background-image: url('../images/team/rohan-dondeti.jpg'); 
     background-size: cover;
     transform: scale(1.5);
     background-position-x: 1px;
@@ -283,7 +283,7 @@ nav ul li {
 .exec-portrait-2 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/anika-kesavalu.jpg'); 
+    background-image: url('../images/team/anika-kesavalu.jpg'); 
     background-size: cover;
     transform: scale(2.5);
     background-position-x: 2px;
@@ -293,7 +293,7 @@ nav ul li {
 .exec-portrait-3 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/tanish-kher.jpg'); 
+    background-image: url('../images/team/tanish-kher.jpg'); 
     background-size: cover;
     transform: scale(1.6);
     background-position-x: 1px;
@@ -303,7 +303,7 @@ nav ul li {
 .exec-portrait-4 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/karaan-shetty.jpg'); 
+    background-image: url('../images/team/karaan-shetty.jpg'); 
     background-size: cover;
     transform: scale(1.9);
     background-position-x: 1px;
@@ -313,7 +313,7 @@ nav ul li {
 .exec-portrait-5 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/kush-goswami.jpg'); 
+    background-image: url('../images/team/kush-goswami.jpg'); 
     background-size: cover;
     transform: scale(1.8);
     background-position-x: 10px;
@@ -323,7 +323,7 @@ nav ul li {
 .exec-portrait-6 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/kiera-flores.jpeg'); 
+    background-image: url('../images/team/kiera-flores.jpeg'); 
     background-size: cover;
     transform: scale(1.9);
     background-position-x: -5px;
@@ -333,7 +333,7 @@ nav ul li {
 .exec-portrait-7 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/shreya-khanna.jpeg'); 
+    background-image: url('../images/team/shreya-khanna.jpeg'); 
     background-size: cover;
     transform: scale(1.5);
     background-position-x: -45px;
@@ -343,7 +343,7 @@ nav ul li {
 .exec-portrait-8 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/tiffany-lin.jpg'); 
+    background-image: url('../images/team/tiffany-lin.jpg'); 
     background-size: cover;
     background-position: center;
     transform: scale(1.9);
@@ -354,7 +354,7 @@ nav ul li {
 .portrait-1 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/jolene-seng.jpeg');
+    background-image: url('../images/team/jolene-seng.jpeg');
     background-size: cover;
     transform: scale(1.2);
     background-position-x: -5px;
@@ -364,7 +364,7 @@ nav ul li {
 .portrait-2 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/anish-bheemanpally.png');
+    background-image: url('../images/team/anish-bheemanpally.png');
     background-size: cover;
     transform: scale(1.3);
     background-position-y: -25px;
@@ -373,7 +373,7 @@ nav ul li {
 .portrait-3 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/kush-goswami.jpg');
+    background-image: url('../images/team/kush-goswami.jpg');
     background-size: cover;
     transform: scale(1.8);
     background-position-x: 10px;
@@ -383,7 +383,7 @@ nav ul li {
 .portrait-4 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/hovan-liu.jpg');
+    background-image: url('../images/team/hovan-liu.jpg');
     background-size: cover;
     background-position-y: 65px;
     transform: scale(1.5);
@@ -392,7 +392,7 @@ nav ul li {
 .portrait-5 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/becca-peng.png');
+    background-image: url('../images/team/becca-peng.png');
     background-size: cover;
     transform: scale(1.6) rotate(-1deg);
     background-position-x: 5px;
@@ -402,7 +402,7 @@ nav ul li {
 .portrait-6 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/sohail-mukadam.jpeg');
+    background-image: url('../images/team/sohail-mukadam.jpeg');
     background-size: cover;
     transform: scale(1.15);
     background-position-x: -60px;
@@ -412,7 +412,7 @@ nav ul li {
 .portrait-7 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/alizeh-ali.jpeg');
+    background-image: url('../images/team/alizeh-ali.jpeg');
     background-size: cover;
     transform: scale(1.9);
     background-position-y: -10px;
@@ -421,7 +421,7 @@ nav ul li {
 .portrait-8 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/anshul-doshi.jpg');
+    background-image: url('../images/team/anshul-doshi.jpg');
     background-size: cover;
     transform: scale(1.9);
     background-position-y: 15px;
@@ -430,7 +430,7 @@ nav ul li {
 .portrait-9 {
     width: 100%;
     height: 100%;
-    background-image: url('images/team/sophia-yang.jpg');
+    background-image: url('../images/team/sophia-yang.jpg');
     background-size: cover;
     transform: scale(1.8);
     background-position-x: 10px;
