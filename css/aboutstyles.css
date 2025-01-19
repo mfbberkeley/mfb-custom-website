@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+    overflow-x: hidden; 
 }
 
 header {
@@ -11,12 +11,8 @@ header {
     height: 50px;
     display: flex;
     justify-content: space-between;
-    /* margin-top: 20px; */
     margin-left: 5vw;
     margin-right: 5vw;
-    /* border-style: solid;
-    border-color: red;
-    border-width: 1px; */
 }
 
 .text-green {
@@ -35,9 +31,6 @@ nav {
     align-items: center;
     justify-content: space-between;
     margin-left: 50px;
-    /* border-style: solid;
-    border-color: red;
-    border-width: 1px; */
 }
 
 nav ul {
@@ -136,7 +129,7 @@ nav ul li {
 
 /* Title Section */
 .title-section {
-    background-image: url('../images/about/about-background.png');
+    background-image: url('images/about/about-background.png');
     background-size: cover;
     background-position: center;
     height: 60vh;

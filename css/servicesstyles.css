@@ -27,7 +27,7 @@ header a:hover {
 }
 
 .services-s1 {
-    background-image: url('../images/services/services-background.png');
+    background-image: url('images/services/services-background.png');
     background-size: cover; 
     background-position: center;
     height: 60vh;

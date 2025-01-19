@@ -186,7 +186,7 @@ footer {
    ----------------------------------------- */
 /* --- Section 1 (Title) --- */
 .home-s1 {
-    background-image: url('../images/home/section1background.jpeg');
+    background-image: url('images/home/section1background.jpeg');
     background-size: cover; 
     background-position: center;
 
@@ -359,7 +359,7 @@ footer {
 
 /* --- Section 4 (What We Do (Statistics)) --- */
 .home-s4 {
-    background-image: url('../images/home/berkeley.png');
+    background-image: url('images/home/berkeley.png');
     background-size: cover; 
     background-position: center;
     width: 100vw;

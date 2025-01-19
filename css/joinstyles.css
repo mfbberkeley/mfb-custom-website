@@ -133,7 +133,7 @@ nav ul li {
 
 /* Section 1 */
 .title-section {
-    background-image: url('../images/join/join-background.png');
+    background-image: url('images/join/join-background.png');
     background-size: cover; 
     background-position: center;
     height: 60vh;
