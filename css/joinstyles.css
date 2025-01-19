@@ -20,6 +20,10 @@ header {
     width: 90vw;
 }
 
+header a {
+    width: 5vw;
+}
+
 header a:hover {
     cursor: grab;
 }
