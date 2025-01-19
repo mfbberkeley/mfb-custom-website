@@ -336,6 +336,7 @@ footer {
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-bottom: 30px;
   }
 
   .home-s3-content p {
@@ -728,10 +729,6 @@ footer {
         font-size: 14vw;
     }
 
-    .home-s1 {
-        height: 80vw;
-    }
-
     .home-background-image {
         width: 100%;
         height: auto;
@@ -752,6 +749,7 @@ footer {
         padding: 0 0 0 0;
     }
 
+    /* Section 4 */
     .home-s3-content p {
         font-size: 15px;
         max-width: 80%;
@@ -770,7 +768,6 @@ footer {
         height: 450px;
     }
 
-    /* Section 4 */
     .home-s4 {
         padding-bottom: 0px;
         height: 700px;
