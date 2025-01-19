@@ -20,6 +20,7 @@ header {
     justify-content: space-between;
     margin-left: 5vw;
     margin-right: 5vw;
+    width: 80vw;
 }
 
 header a:hover {
@@ -312,24 +313,24 @@ footer {
 }
 
 /* --- Section 3 (Who We Are) --- */
-  .home-s3-title {
+.home-s3-title {
     display: flex;
     justify-content: center;
     margin-top: 50px;
     margin-bottom: 40px;
     padding: 0 0;
-  }
+}
 
-  .home-s3-title p {
+.home-s3-title p {
     font-family: 'Roboto', serif;
     font-weight: 600;
     color: #136F64;
     font-size: 50px;
 
     margin: 0 0;
-  }
+}
 
-  .home-s3-content {
+.home-s3-content {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -337,9 +338,9 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
     margin-bottom: 30px;
-  }
+}
 
-  .home-s3-content p {
+.home-s3-content p {
     font-family: 'Roboto', serif;
     font-weight: 400;
     font-size: 20px;
@@ -349,13 +350,13 @@ footer {
     line-height: 2;
     margin: 0;
     flex: 1;
-  }
+}
 
-  .home-s3-content img {
+.home-s3-content img {
     max-width: 40%; 
     height: auto; 
     object-fit: cover;
-  }
+}
 
 /* --- Section 4 (What We Do (Statistics)) --- */
 .home-s4 {
@@ -469,7 +470,7 @@ footer {
    Global Styles
    ----------------------------------------- */
    /* Footer */
-   .footer-icons img {
+    .footer-icons img {
         width: 20px;
         height: 20px;
     }
@@ -571,8 +572,6 @@ footer {
 
         padding-bottom: 100px;
         padding-top: 50px;
-
-
     }
 
     .home-s4-carousel-container {
@@ -656,6 +655,13 @@ footer {
     /* -----------------------------------------
    Global Styles
    ----------------------------------------- */
+    header nav {
+        display: none;
+    }
+
+    #hamburger-icon {
+        display: block;
+    }
     /* Footer */
     footer {
         padding-top: 20px;
@@ -680,14 +686,6 @@ footer {
     .footer-section-2 p {
         padding: 0px 30px 0px 30px;
         font-size: 7px;
-    }
-
-    header nav {
-        display: none;
-    }
-
-    #hamburger-icon {
-        display: block;
     }
 
     /* Section 1 */
