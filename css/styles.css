@@ -575,8 +575,10 @@ footer {
         width: 80vw;
         object-fit: cover;
         background-color: white;
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        padding-left: 25px;
+        padding-right: 25px;
     }
 
     .home-s4-carousel-container {
