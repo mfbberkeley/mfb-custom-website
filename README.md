@@ -1,2 +1,1 @@
-# mfb-website
-# test commit
+Custom Website for Microfinance at Berkeley

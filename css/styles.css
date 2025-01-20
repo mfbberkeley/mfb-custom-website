@@ -2219,10 +2219,23 @@ footer {
         padding: 0 10px;
     }
 
+    .team-page .exec-portrait-7 {
+        background-position-x: -25px;
+    }
+
+    .team-page .portrait-4 {
+        background-position-y: 30px;
+    }
+
+    .team-page .portrait-6 {
+        background-position-y: -2px;
+        background-position-x: -40px;
+    }
+
     .team-page .portrait,
     .team-page .flip-card {
-        width: 240px;
-        height: 320px;
+        width: 180px;
+        height: 240px;
     }
 
     .team-page .executive-board-title,
