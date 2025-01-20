@@ -306,10 +306,6 @@ footer {
     line-height: 1;
 }
 
-.home-page .home-s2-square-suffix {
-    font-size: 6vw; 
-}
-
 /* For squares other than the first one (without "K") */
 .home-page .home-s2-square .home-s2-square-number:not(:first-child) .home-s2-square-suffix {
     display: none;
