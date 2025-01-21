@@ -474,7 +474,7 @@ footer {
 
 /* Title Section */
 .about-page .title-section {
-    background-image: url('../images/about/about-background.png');
+    background-image: url('../images/about/about-background.webp');
     background-size: cover;
     background-position: center;
     height: 60vh;
