@@ -928,11 +928,6 @@ footer {
     transform: scale(1.2);
 }
 
-.team-page [class^="exec-portrait-"],
-.team-page [class^="portrait-"] {
-    content-visibility: auto;
-}
-
 /* Individual portrait styles */
 .team-page .exec-portrait-1 {
     width: 100%;
@@ -1378,12 +1373,6 @@ footer {
     margin-bottom: 12vw;
 }
 
-@media only screen and (max-width: 1400px) {
-    .team-page .members-grid {
-        grid-template-columns: repeat(4, minmax(auto, 180px));
-    }
-}
-
 @media only screen and (max-width: 1200px) {
     .team-page .executive-board .portrait-grid,
     .team-page .board .portrait-grid {
@@ -1395,6 +1384,10 @@ footer {
     /* Handle last row items for executive board */
     .team-page .executive-board .portrait-grid .portrait-card:last-child:nth-child(3n-1) {
         grid-template-columns: repeat(3, minmax(auto, 300px));
+    }
+
+    .team-page .members-grid {
+        grid-template-columns: repeat(5, minmax(auto, 180px));
     }
 
     /* Handle last row items for board */
@@ -1410,6 +1403,17 @@ footer {
 }
 
 @media only screen and (max-width: 1000px) {
+    .team-page .executive-board .portrait-grid,
+    .board .portrait-grid {
+        grid-template-columns: repeat(2, minmax(auto, 280px));
+    }
+
+    .team-page .portrait,
+    .team-page .flip-card {
+        width: 280px;
+        height: 373px; /* Maintains aspect ratio */
+    }
+
     .team-page .members-grid {
         grid-template-columns: repeat(3, minmax(auto, 180px));
     }
