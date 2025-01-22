@@ -474,6 +474,8 @@ footer {
 
 /* Title Section */
 .about-page .title-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 60vh;
     background-image: url('../images/about/about-background.webp');
     background-size: cover;
     background-position: center;
@@ -784,6 +786,8 @@ footer {
 
 /* Title Section */
 .team-page .title-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 60vh;
     background-image: url('../images/team/team-background.webp');
     background-size: cover;
     background-position: center;
@@ -922,6 +926,11 @@ footer {
 
 .team-page .flip-socials .icon:hover {
     transform: scale(1.2);
+}
+
+.team-page [class^="exec-portrait-"],
+.team-page [class^="portrait-"] {
+    content-visibility: auto;
 }
 
 /* Individual portrait styles */
