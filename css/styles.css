@@ -1023,10 +1023,11 @@ footer {
 .team-page .portrait-2 {
     width: 100%;
     height: 100%;
-    background-image: url('../images/team/anish-bheemanpally.webp');
+    background-image: url('../images/team/sohail-mukadam.webp');
     background-size: cover;
-    transform: scale(1.3);
-    background-position-y: -25px;
+    transform: scale(1.15);
+    background-position-x: -60px;
+    background-position-y: 20px;
 }
 
 .team-page .portrait-3 {
@@ -1061,14 +1062,32 @@ footer {
 .team-page .portrait-6 {
     width: 100%;
     height: 100%;
-    background-image: url('../images/team/sohail-mukadam.webp');
+    background-image: url('../images/team/shreya-khanna.webp'); 
     background-size: cover;
-    transform: scale(1.15);
-    background-position-x: -60px;
-    background-position-y: 20px;
+    transform: scale(1.5);
+    background-position-x: -45px;
+    background-position-y: -20px;
 }
 
 .team-page .portrait-7 {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/team/anish-bheemanpally.webp');
+    background-size: cover;
+    transform: scale(1.3);
+    background-position-y: -25px;
+}
+
+.team-page .portrait-8 {
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/team/christian-reyes.webp');
+    background-size: cover;
+    transform: scale(1);
+    background-position-x: -50px;
+}
+
+.team-page .portrait-9 {
     width: 100%;
     height: 100%;
     background-image: url('../images/team/alizeh-ali.webp');
@@ -1077,7 +1096,7 @@ footer {
     background-position-y: -10px;
 }
 
-.team-page .portrait-8 {
+.team-page .portrait-10 {
     width: 100%;
     height: 100%;
     background-image: url('../images/team/anshul-doshi.webp');
@@ -1086,7 +1105,7 @@ footer {
     background-position-y: 15px;
 }
 
-.team-page .portrait-9 {
+.team-page .portrait-11 {
     width: 100%;
     height: 100%;
     background-image: url('../images/team/sophia-yang.webp');
@@ -1094,7 +1113,7 @@ footer {
     transform: scale(1.8);
     background-position-x: 10px;
     background-position-y: -10px;
-}
+} */
 
 .team-page .portrait-grid .portrait-card .portrait img.position-1 {
     transform: scale(1.1);
