@@ -1392,11 +1392,11 @@ footer {
     margin-bottom: 12vw;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px) and (min-width: 1001px) {
     .team-page .executive-board .portrait-grid,
     .team-page .board .portrait-grid {
         display: grid;
-        grid-template-columns: repeat(3, minmax(auto, 300px));
+        grid-template-columns: repeat(3, minmax(auto, 320px));
         gap: 25px;
     }
 
@@ -1423,7 +1423,7 @@ footer {
 
 @media only screen and (max-width: 1000px) {
     .team-page .executive-board .portrait-grid,
-    .board .portrait-grid {
+    .team-page .board .portrait-grid {
         grid-template-columns: repeat(2, minmax(auto, 280px));
     }
 
