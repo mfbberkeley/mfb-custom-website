@@ -1022,9 +1022,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/alizehnew.webp');
     background-size: cover;
-    transform: scale(1.8);
-    background-position-x: 10px;
-    background-position-y: -10px;
+    background-position: center;
 }
 
 .team-page .portrait-4 {
@@ -1032,8 +1030,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/eurusnew.webp');
     background-size: cover;
-    background-position-y: 65px;
-    transform: scale(1.5);
+    background-position: center;
 }
 
 .team-page .portrait-5 {
@@ -1051,9 +1048,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/karennew.webp'); 
     background-size: cover;
-    transform: scale(1.5);
-    background-position-x: -45px;
-    background-position-y: -20px;
+    background-position: center;
 }
 
 .team-page .portrait-7 {
