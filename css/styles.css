@@ -962,9 +962,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/sohail-mukadam.webp'); 
     background-size: cover;
-    transform: scale(1.5);
-    background-position-x: -2px;
-    background-position-y: 10px;
+    background-position: center;
 }
 
 .team-page .exec-portrait-5 {
@@ -972,9 +970,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/danielnew.webp'); 
     background-size: cover;
-    transform: scale(1.8);
-    background-position-x: 10px;
-    background-position-y: -10px;
+    background-position: center;
 }
 
 .team-page .exec-portrait-6 {
@@ -982,9 +978,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/anish-bheemanpally.webp'); 
     background-size: cover;
-    transform: scale(1.9);
-    background-position-x: -5px;
-    background-position-y: 2px;
+    background-position: center;
 }
 
 .team-page .exec-portrait-7 {
@@ -992,9 +986,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/christian-reyes.webp'); 
     background-size: cover;
-    transform: scale(1.5);
-    background-position-x: -45px;
-    background-position-y: -20px;
+    background-position: center;
 }
 
 .team-page .exec-portrait-8 {
@@ -1003,9 +995,6 @@ footer {
     background-image: url('../images/team/nithyanew.webp'); 
     background-size: cover;
     background-position: center;
-    transform: scale(1.9);
-    background-position-x: -5px;
-    background-position-y: -0px;
 }
 
 .team-page .portrait-1 {
