@@ -946,7 +946,7 @@ footer {
     background-size: cover;
     transform: scale(2.5);
     background-position-x: 2px;
-    background-position-y: 5px;
+    background-position-y: -15px;
 }
 
 .team-page .exec-portrait-3 {
