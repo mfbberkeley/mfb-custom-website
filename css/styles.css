@@ -944,9 +944,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/jolene.webp'); 
     background-size: cover;
-    transform: scale(2.5);
-    background-position-x: 2px;
-    background-position-y: -15px;
+    background-position: center;
 }
 
 .team-page .exec-portrait-3 {
