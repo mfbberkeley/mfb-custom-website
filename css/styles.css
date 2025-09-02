@@ -1038,9 +1038,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/matthewnew.webp');
     background-size: cover;
-    transform: scale(1.6) rotate(-1deg);
-    background-position-x: 5px;
-    background-position-y: -40px;
+    background-position: center;
 }
 
 .team-page .portrait-6 {
@@ -1074,8 +1072,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/maeve.webp');
     background-size: cover;
-    transform: scale(1.9);
-    background-position-y: -10px;
+    background-position: center;
 }
 
 .team-page .portrait-10 {
@@ -1083,8 +1080,7 @@ footer {
     height: 100%;
     background-image: url('../images/team/ashkan.webp');
     background-size: cover;
-    transform: scale(1.9);
-    background-position-y: 15px;
+    background-position: center;
 }
 
 .team-page .portrait-11 {
@@ -1092,10 +1088,8 @@ footer {
     height: 100%;
     background-image: url('../images/team/lauren.webp');
     background-size: cover;
-    transform: scale(1.8);
-    background-position-x: 10px;
-    background-position-y: -10px;
-} */
+    background-position: center;
+}
 
 .team-page .portrait-grid .portrait-card .portrait img.position-1 {
     transform: scale(1.1);
