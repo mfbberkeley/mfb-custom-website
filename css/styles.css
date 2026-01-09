@@ -1231,8 +1231,8 @@ footer {
 /* Section 2 - Information */
 .join-page .join-s2 {
     text-align: center;
-    margin-top: 250px;
     justify-content: center;
+    padding: 50px 10% 75px;
 }
 
 .join-page .join-s2 h1 {
