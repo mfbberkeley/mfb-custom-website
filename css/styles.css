@@ -1045,6 +1045,8 @@ footer {
     height: 100%;
     background-size: cover;
     background-position: center;
+    
+    background-position-y: -50px;
 }
 
 .team-page .portrait-8 {
