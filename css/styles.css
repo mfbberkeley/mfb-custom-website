@@ -646,9 +646,12 @@ footer {
 .services-page .services-s2-title {
     font-family: 'Roboto';
     font-weight: 400;
-    font-size: 25px;
-    margin-top: 8vw;
+    font-size: clamp(16px, 1.5vw, 25px);
+    margin-top: 4vw;
     margin-bottom: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
 
     /* Section 2 - Flexbox Grid */
@@ -1052,6 +1055,13 @@ footer {
 }
 
 .team-page .portrait-9 {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.team-page .portrait-10 {
     width: 100%;
     height: 100%;
     background-size: cover;
