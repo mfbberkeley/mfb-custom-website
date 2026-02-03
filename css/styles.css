@@ -1031,6 +1031,9 @@ footer {
     height: 100%;
     background-size: cover;
     background-position: center;
+    transform: scale(1.2);
+    background-position-y: 5px;
+    
 }
 
 .team-page .portrait-6 {
@@ -1068,8 +1071,6 @@ footer {
     height: 100%;
     background-size: cover;
     background-position: center;
-    transform: scale(1.2);
-    background-position-y: 5px;
 }
 
 .team-page .portrait-grid .portrait-card .portrait img.position-1 {
