@@ -990,6 +990,13 @@ footer {
     background-position: center;
 }
 
+.team-page .exec-portrait-7 {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
 .team-page .portrait-0 {
     width: 100%;
     height: 100%;
