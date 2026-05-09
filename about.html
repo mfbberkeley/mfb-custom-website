@@ -10,39 +10,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+
+
 <body class="about-page">
     <!-- Navbar -->
     <!-- Section 1 (Title)-->
      <div class="title-section">
-     <header>
-      <a href="index.html">
-        <img loading="lazy" src="images/home/mfblogo.png" alt="MFB Logo" id="mfb-logo">
-      </a>
-      <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="join.html">Join</a></li>
-            <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </nav>
-      <!-- Mobile Menu -->
-      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <ul class="mobile-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </div>
-      </header>
+     <div id="navbar"></div>
+     <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('navbar').innerHTML = html
+        })
+     </script>
+
       <!-- Text -->
       <div class="title">
         <p>ABOUT</p>

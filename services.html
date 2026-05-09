@@ -14,36 +14,14 @@
     <!-- Navbar -->
     <!-- Section 1 (Title)-->
      <section class="services-s1">
-     <header>
-      <a href="index.html">
-        <img src="images/home/mfblogo.png" alt="MFB Logo" id="mfb-logo">
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </nav>
-      <!-- Mobile Menu -->
-      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <ul class="mobile-menu">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="team.html">Team</a></li>
-          <li><a href="join.html">Join</a></li>
-          <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </div>
-      <!-- Text -->
-      </header>
+     <div id="navbar"></div>
+     <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('navbar').innerHTML = html
+        })
+     </script>
       <div class="services-s1-title">
         <p>SERVICES</p>
       </div>
