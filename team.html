@@ -1,4 +1,7 @@
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -10,6 +13,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <body class="team-page">
     <!--
      Use Excel file and convert to JSON to update
@@ -212,36 +218,14 @@
     <!-- Navbar -->
     <!-- Section 1 (Title)-->
      <div class="title-section">
-     <header>
-        <a href="index.html">
-            <img loading="lazy" src="images/home/mfblogo.png" alt="MFB Logo" id="mfb-logo">
-        </a>
-      <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="join.html">Join</a></li>
-            <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </nav>
-      <!-- Mobile Menu -->
-      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <ul class="mobile-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="team.html">Team</a></li>
-            <li><a href="join.html">Join</a></li>
-            <li><a href="intern.html">Intern</a></li>
-        </ul>
-      </div>
-      <!-- Text -->
-      </header>
+    <div id="navbar"></div>
+     <script>
+      fetch('/navbar.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('navbar').innerHTML = html
+        })
+     </script>
       <div class="title">
         <p>TEAM</p>
       </div>
@@ -267,28 +251,14 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-section-1">
-          <p>Microfinance at Berkeley is sponsored by the Associated Students of the <br> University of California and the National Undergraduate Impact Investing Society.</p>
-          <div class="footer-icons">
-            <a href="mailto:berkeleymicrofinance@gmail.com">
-              <img loading="lazy" src="images/home/mail-logo.png" alt="mail icon">
-            </a>
-            <a href="https://www.facebook.com/microfinanceatberkeley/" target="_blank">
-              <img loading="lazy" src="images/home/facebook-logo.png" alt="facebook icon">
-            </a>
-            <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" target="_blank">
-              <img loading="lazy" src="images/home/instagram-logo.png" alt="instagram icon">
-            </a>
-            <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" target="_blank">
-              <img loading="lazy" src="images/home/linkedin-logo.png" alt="linkedin icon">
-            </a>
-          </div>
-        </div>
-        <div class="footer-section-2">
-          <p>We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.</p>
-        </div>
-    </footer>
+   <div id="footer"></div>
+  <script>
+  fetch('/footer.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('footer').innerHTML = html
+    })
+  </script>
     <script src="js/index.js"></script>
 
 
@@ -376,5 +346,105 @@
             `;
         };
     </script>
+    <script>
+    
+        const supabaseUrl = 'https://ltkyxgsgkwqowxikatub.supabase.co'
+        const supabaseKey = 'sb_publishable_JRIwBltGZdjZZod9qnNPzw_p3RiR4B3'
+
+        const client = supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        )
+
+        async function loadPlayers() {
+            const { data, error } = await client
+            .from('members')
+            .select('*')
+
+            if (error) {
+            console.error(error)
+            return
+            }
+            console.log(data)
+
+            
+
+            var memberWrapper = document.getElementById("members-grid");
+            const execWrapper = document.getElementById("exec-grid");
+            const boardGrid = document.getElementById("board-grid");
+            data.forEach(member => {
+                if (member.group == "member") {
+                    memberWrapper.innerHTML += `
+                        <div class="member-card">
+                            <div class="member-portrait" style="background-image: url('${member.image_url}')"></div>
+                            <h3 class="member-name">${member.name}</h3>
+                            <p class="member-title">${member.title}</p>
+                        </div>
+                    `;
+                } else if (member.group == "exec") {
+                    execWrapper.innerHTML += `
+                        <div class="portrait-card">
+                            <div class="flip-card">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front exec-portrait-0" style="background-image: url('${member.image_url}')"></div>
+                                    <div class="flip-card-back">
+                                        <p class="year-major">
+                                            Year: ${member.year} <br>
+                                            Major: ${member.major}
+                                        </p>
+                                        <p class="hobbies">
+                                            Hobbies: ${member.hobbies}
+                                        </p>
+                                        <div class="flip-socials">
+                                            <a href="mailto:${member.email}">
+                                                <img loading="lazy" src="images/home/mail-logo.png" alt="email icon" class="icon"/>
+                                            </a>
+                                            <a href="${member.linkedin}" target="_blank">
+                                                <img loading="lazy" src="images/home/linkedin-logo.png" alt="linkedin icon" class="icon"/>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h3 class="portrait-name">${member.name}</h3>
+                            <p class="portrait-title">${member.title}</p>
+                        </div>
+                    `;
+                } else if (member.group == "board") {
+                    boardGrid.innerHTML += `
+                        <div class="portrait-card">
+                        <div class="flip-card">
+                            <div class="flip-card-inner">
+                            <div class="flip-card-front portrait-0" style="background-image: url('${member.image_url}')"></div>
+                            <div class="flip-card-back">
+                                <p class="year-major">
+                                Year: ${member.year} <br>
+                                Major: ${member.major}
+                                </p>
+                                <p class="hobbies">
+                                Hobbies: ${member.hobbies}
+                                </p>
+                                <div class="flip-socials">
+                                <a href="mailto:${member.email}">
+                                    <img src="images/home/mail-logo.png" alt="email icon" class="icon"/>
+                                </a>
+                                <a href="${member.linkedin}" target="_blank">
+                                    <img src="images/home/linkedin-logo.png" alt="linkedin icon" class="icon"/>
+                                </a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <h3 class="portrait-name">${member.name}</h3>
+                        <p class="portrait-title">${member.title}</p>
+                        </div>
+                    `;
+                }
+            });
+        }
+        window.addEventListener("DOMContentLoaded", () => {
+            loadPlayers()
+        })
+        </script>
 </body>
 </html>
