@@ -137,29 +137,16 @@
       </div>
 
      </section>
+
     <!-- Footer -->
-     <footer>
-        <div class="footer-section-1">
-          <p>Microfinance at Berkeley is sponsored by the  Associated Students of the <br> University of California and the National Undergraduate Impact Investing Society.</p>
-          <div class="footer-icons">
-            <a href="mailto:berkeleymicrofinance@gmail.com">
-              <img src="images/home/mail-logo.png", alttext="mail icon">
-            </a>
-            <a href="https://www.facebook.com/microfinanceatberkeley/" target="_blank">
-              <img src="images/home/facebook-logo.png", alttext="facebook icon">
-            </a>
-            <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" target="_blank">
-              <img src="images/home/instagram-logo.png", alttext="instagram icon">
-            </a>
-            <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" target="_blank">
-              <img src="images/home/linkedin-logo.png", alttext="linkedin icon">
-            </a>
-          </div>
-        </div>
-        <div class="footer-section-2">
-          <p>We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.</p>
-        </div>
-    </footer> 
+      <div id="footer"></div>
+      <script>
+      fetch('/footer.html')
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById('footer').innerHTML = html
+        })
+      </script>
     <script src="js/index.js"></script>
 </body>
 </html>
