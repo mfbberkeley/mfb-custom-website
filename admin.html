@@ -10,6 +10,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+  <style>
+    /* Hide page until auth check is complete */
+    html { visibility: hidden; opacity: 0; }
+  </style>
 </head>
 <body class="about-page admin-page">
 
@@ -22,13 +28,13 @@
         .then(html => { document.getElementById('navbar').innerHTML = html })
     </script>
     <div class="title">
-      <p>edit roster</p>
+      <p>ROSTER</p>
     </div>
   </div>
 
   <main>
     <div class="admin-toolbar">
-      <button class="btn btn-primary" id="open-add-modal">+ Add Member</button>
+      <button class="btn btn-primary" id="open-add-modal" style="display:none;">+ Add Member</button>
       <button class="btn btn-ghost" id="reload-btn">Reload</button>
       <button class="btn btn-secondary" id="signout-btn" style="margin-left:auto;">Sign out</button>
     </div>
@@ -84,7 +90,10 @@
             <label>Photo</label>
             <div class="file-row">
               <div class="preview" id="f-preview"></div>
-              <input type="file" id="f-photo" accept="image/*">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <input type="file" id="f-photo" accept="image/*">
+                <button type="button" class="btn btn-secondary" id="recrop-btn" style="display:none;">Re-crop existing photo</button>
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +103,20 @@
           <button type="submit" class="btn btn-primary" id="save-btn">Save</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="cropper-backdrop">
+    <div class="modal" style="max-width: 720px;">
+      <h2>Crop Photo</h2>
+      <p style="color:#6b7280; margin-top:-4px;">Locked to 3:4 portrait. Drag to reposition, scroll to zoom.</p>
+      <div style="max-height:60vh; background:#111; overflow:hidden;">
+        <img id="cropper-image" style="max-width:100%; display:block;">
+      </div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-secondary" id="cropper-cancel">Cancel</button>
+        <button type="button" class="btn btn-primary" id="cropper-apply">Apply</button>
+      </div>
     </div>
   </div>
 
@@ -111,24 +134,30 @@
 
   <script src="js/index.js"></script>
 
-  <!-- Supabase -->
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
-    // ---------- Supabase client ----------
     const supabaseUrl = "https://ltkyxgsgkwqowxikatub.supabase.co";
     const supabaseKey = "sb_publishable_JRIwBltGZdjZZod9qnNPzw_p3RiR4B3";
     const sb = supabase.createClient(supabaseUrl, supabaseKey);
 
-    // Storage bucket name. Create this bucket in your Supabase dashboard
-    // (Storage → New bucket → name: "team-photos", make it Public).
     const PHOTO_BUCKET = "member_images";
 
-    // ---------- Auth gate ----------
+    // ----- Permission state (populated by loadRoster) -----
+    let currentUser = null;     // Supabase auth user
+    let currentMemberId = null; // id of the member row matching the auth email
+    let isAdmin = false;
+    let currentRoster = [];     // cached so sort handlers don't refetch
+
+    // Auth gate — redirect away immediately if not signed in, then reveal page.
     (async () => {
       const { data } = await sb.auth.getUser();
       if (!data.user) {
-        window.location.href = "/login.html";
+        window.location.replace("/login.html");
+        return;
       }
+      document.documentElement.style.visibility = "visible";
+      document.documentElement.style.opacity = "1";
     })();
 
     document.getElementById("signout-btn").addEventListener("click", async () => {
@@ -156,27 +185,64 @@
 
     async function loadRoster() {
       rosterContainer.innerHTML = `<div class="loading-state">Loading roster…</div>`;
-      const { data, error } = await sb.from("members").select("*").order("name");
-      if (error) {
-        rosterContainer.innerHTML = `<div class="empty">Error loading roster: ${error.message}</div>`;
+
+      const userRes = await sb.auth.getUser();
+      if (!userRes.data?.user) {
+        window.location.replace("/login.html");
+        return;
+      }
+      currentUser = userRes.data.user;
+
+      const [profileRes, rosterRes] = await Promise.all([
+        sb.from("profiles").select("role").eq("id", currentUser.id).single(),
+        sb.from("members").select("*")
+          .order("sort_order", { ascending: true, nullsFirst: false })
+          .order("name", { ascending: true }),
+      ]);
+
+      if (rosterRes.error) {
+        rosterContainer.innerHTML = `<div class="empty">Error loading roster: ${rosterRes.error.message}</div>`;
         toast("Failed to load roster", "error");
         return;
       }
-      renderRoster(data || []);
+
+      // Profile may be missing (e.g. first sign-in before trigger fires) — default to member
+      isAdmin = profileRes.data?.role === "admin";
+
+      currentRoster = (rosterRes.data || []).map(m => ({ ...m, id: String(m.id) }));
+      const myEmail = (currentUser.email || "").toLowerCase();
+      const me = currentRoster.find(m => (m.email || "").toLowerCase() === myEmail) || null;
+      currentMemberId = me?.id ?? null;
+
+      // Toolbar: only admins can add new members
+      document.getElementById("open-add-modal").style.display = isAdmin ? "" : "none";
+
+      renderRoster(currentRoster);
     }
 
     function renderRoster(members) {
       const byGroup = { exec: [], board: [], member: [] };
       members.forEach(m => {
         if (byGroup[m.group]) byGroup[m.group].push(m);
-        else byGroup.member.push(m); // fallback
+        else byGroup.member.push(m);
+      });
+
+      // Sort each group by sort_order (nulls last), then name
+      Object.keys(byGroup).forEach(k => {
+        byGroup[k].sort((a, b) => {
+          const ao = a.sort_order ?? Infinity;
+          const bo = b.sort_order ?? Infinity;
+          if (ao !== bo) return ao - bo;
+          return (a.name || "").localeCompare(b.name || "");
+        });
       });
 
       const html = GROUPS.map(g => {
         const list = byGroup[g.key];
-        const rows = list.length ? list.map(rowHtml).join("") : `
-          <tr><td colspan="5" class="empty" style="background:white;">No one in this group yet.</td></tr>
-        `;
+        const canSortGroup = isAdmin && (g.key === "exec" || g.key === "board");
+        const rows = list.length
+          ? list.map((m, i) => rowHtml(m, i, list.length, canSortGroup)).join("")
+          : `<tr><td colspan="6" class="empty" style="background:white;">No one in this group yet.</td></tr>`;
         return `
           <section class="group-section">
             <div class="group-header">
@@ -186,6 +252,7 @@
             <table class="roster-table">
               <thead>
                 <tr>
+                  ${canSortGroup ? `<th style="width:70px;">Order</th>` : ``}
                   <th style="width:60px;">Photo</th>
                   <th>Name</th>
                   <th>Title</th>
@@ -201,33 +268,57 @@
 
       rosterContainer.innerHTML = html;
 
-      // Wire up edit/delete buttons
       rosterContainer.querySelectorAll(".icon-btn.edit").forEach(btn => {
         btn.addEventListener("click", () => openEditModal(btn.dataset.id));
       });
       rosterContainer.querySelectorAll(".icon-btn.delete").forEach(btn => {
         btn.addEventListener("click", () => deleteMember(btn.dataset.id, btn.dataset.name, btn.dataset.photo));
       });
+      rosterContainer.querySelectorAll(".icon-btn.move").forEach(btn => {
+        btn.addEventListener("click", () => moveMember(btn.dataset.id, parseInt(btn.dataset.dir, 10)));
+      });
     }
 
-    function rowHtml(m) {
+    function rowHtml(m, index, groupLength, canSortGroup) {
       const photo = m.image_url
         ? `style="background-image:url('${escapeAttr(m.image_url)}')"`
         : "";
       const yearMajor = [m.year, m.major].filter(Boolean).join(" · ");
+
+      // Permission flags for this row
+      const isOwnRow = currentMemberId && m.id === currentMemberId;
+      const canEdit = isAdmin || isOwnRow;
+      const canDelete = isAdmin;
+
+      const sortCell = canSortGroup ? `
+        <td>
+          <div class="row-actions">
+            <button class="icon-btn move" data-id="${m.id}" data-dir="-1" ${index === 0 ? "disabled" : ""} title="Move up">↑</button>
+            <button class="icon-btn move" data-id="${m.id}" data-dir="1"  ${index === groupLength - 1 ? "disabled" : ""} title="Move down">↓</button>
+          </div>
+        </td>` : "";
+
+      const editBtn = canEdit
+        ? `<button class="icon-btn edit" data-id="${m.id}">Edit</button>`
+        : "";
+      const deleteBtn = canDelete
+        ? `<button class="icon-btn delete"
+                   data-id="${m.id}"
+                   data-name="${escapeAttr(m.name || "")}"
+                   data-photo="${escapeAttr(m.image_url || "")}">Delete</button>`
+        : "";
+
       return `
         <tr>
+          ${sortCell}
           <td><div class="row-photo" ${photo}></div></td>
           <td>${escapeHtml(m.name || "")}</td>
           <td>${escapeHtml(m.title || "")}</td>
           <td style="color:#6b7280;">${escapeHtml(yearMajor)}</td>
           <td>
             <div class="row-actions">
-              <button class="icon-btn edit" data-id="${m.id}">Edit</button>
-              <button class="icon-btn delete"
-                      data-id="${m.id}"
-                      data-name="${escapeAttr(m.name || "")}"
-                      data-photo="${escapeAttr(m.image_url || "")}">Delete</button>
+              ${editBtn}
+              ${deleteBtn}
             </div>
           </td>
         </tr>
@@ -241,6 +332,65 @@
     }
     function escapeAttr(s) { return escapeHtml(s); }
 
+    // ---------- Move (swap sort_order with adjacent row in same group) ----------
+    async function moveMember(id, direction) {
+      if (!isAdmin) return; // belt + suspenders
+      const me = currentRoster.find(m => m.id === id);
+      if (!me) return;
+      if (me.group !== "exec" && me.group !== "board") return;
+
+      // Build the sibling list in the same order the table renders them
+      const siblings = currentRoster
+        .filter(m => m.group === me.group)
+        .sort((a, b) => {
+          const ao = a.sort_order ?? Infinity;
+          const bo = b.sort_order ?? Infinity;
+          if (ao !== bo) return ao - bo;
+          return (a.name || "").localeCompare(b.name || "");
+        });
+
+      const idx = siblings.findIndex(m => m.id === id);
+      const targetIdx = idx + direction;
+      if (targetIdx < 0 || targetIdx >= siblings.length) return;
+
+      const other = siblings[targetIdx];
+
+      // If either is missing a sort_order, give the group sane values first.
+      let aOrder = me.sort_order;
+      let bOrder = other.sort_order;
+      if (aOrder == null || bOrder == null) {
+        // Re-number the whole group with gaps of 10, in DB and locally.
+        const renumber = siblings.map((m, i) => ({ id: m.id, sort_order: (i + 1) * 10 }));
+        const results = await Promise.all(
+          renumber.map(r => sb.from("members").update({ sort_order: r.sort_order }).eq("id", r.id))
+        );
+        for (const r of results) {
+          if (r.error) { toast("Sort failed: " + r.error.message, "error"); return; }
+        }
+        renumber.forEach(r => {
+          const row = currentRoster.find(m => m.id === r.id);
+          if (row) row.sort_order = r.sort_order;
+        });
+        aOrder = (idx + 1) * 10;
+        bOrder = (targetIdx + 1) * 10;
+      }
+
+      // Swap in DB
+      const [r1, r2] = await Promise.all([
+        sb.from("members").update({ sort_order: bOrder }).eq("id", me.id),
+        sb.from("members").update({ sort_order: aOrder }).eq("id", other.id),
+      ]);
+      if (r1.error || r2.error) {
+        toast("Sort failed: " + (r1.error?.message || r2.error.message), "error");
+        return;
+      }
+
+      // Mirror swap locally and re-render from cache (no refetch)
+      me.sort_order = bOrder;
+      other.sort_order = aOrder;
+      renderRoster(currentRoster);
+    }
+
     // ---------- Modal: Add/Edit ----------
     const backdrop = document.getElementById("modal-backdrop");
     const form = document.getElementById("member-form");
@@ -249,30 +399,70 @@
     const fId = document.getElementById("f-id");
 
     function openAddModal() {
+      if (!isAdmin) return;
       modalTitle.textContent = "Add Member";
       form.reset();
       fId.value = "";
       preview.style.backgroundImage = "";
+      croppedBlob = null;
+      recropBtn.style.display = "none";
       backdrop.classList.add("show");
     }
 
-    async function openEditModal(id) {
-      const { data, error } = await sb.from("members").select("*").eq("id", id).single();
-      if (error) { toast("Could not load member", "error"); return; }
-      modalTitle.textContent = "Edit Member";
-      fId.value = data.id;
-      document.getElementById("f-name").value     = data.name || "";
-      document.getElementById("f-title").value    = data.title || "";
-      document.getElementById("f-group").value    = data.group || "member";
-      document.getElementById("f-year").value     = data.year || "";
-      document.getElementById("f-major").value    = data.major || "";
-      document.getElementById("f-email").value    = data.email || "";
-      document.getElementById("f-linkedin").value = data.linkedin || "";
-      document.getElementById("f-hobbies").value  = data.hobbies || "";
-      document.getElementById("f-photo").value    = "";
-      preview.style.backgroundImage = data.image_url ? `url('${data.image_url}')` : "";
-      backdrop.classList.add("show");
+      async function openEditModal(id) {
+    if (!isAdmin && id !== currentMemberId) {
+      toast("You can only edit your own profile", "error");
+      return;
     }
+
+    const { data, error } = await sb
+      .from("members")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (error) {
+      toast("Could not load member", "error");
+      return;
+    }
+
+    modalTitle.textContent = "Edit Member";
+
+    fId.value = data.id;
+
+    document.getElementById("f-name").value     = data.name || "";
+    document.getElementById("f-title").value    = data.title || "";
+    document.getElementById("f-group").value    = data.group || "member";
+    document.getElementById("f-year").value     = data.year || "";
+    document.getElementById("f-major").value    = data.major || "";
+    document.getElementById("f-email").value    = data.email || "";
+    document.getElementById("f-linkedin").value = data.linkedin || "";
+    document.getElementById("f-hobbies").value  = data.hobbies || "";
+
+    document.getElementById("f-photo").value = "";
+
+    croppedBlob = null;
+    pendingOriginal = null;
+
+    preview.style.backgroundImage = data.image_url
+      ? `url('${data.image_url}')`
+      : "";
+
+    // IMPORTANT
+    currentOriginalUrl =
+      data.original_image_url ||
+      data.image_url ||
+      null;
+
+    // show recrop button only if original exists
+    recropBtn.style.display =
+      currentOriginalUrl ? "" : "none";
+
+    document.getElementById("f-group").disabled = !isAdmin;
+    document.getElementById("f-email").disabled = !isAdmin;
+
+    backdrop.classList.add("show");
+  }
 
     function closeModal() { backdrop.classList.remove("show"); }
 
@@ -281,87 +471,298 @@
     document.getElementById("reload-btn").addEventListener("click", loadRoster);
     backdrop.addEventListener("click", e => { if (e.target === backdrop) closeModal(); });
 
-    // Live photo preview
-    document.getElementById("f-photo").addEventListener("change", e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const url = URL.createObjectURL(file);
-      preview.style.backgroundImage = `url('${url}')`;
+    // ---------- Image cropper ----------
+    let cropper = null;
+    let croppedBlob = null;
+    let pendingOriginal = null;    // raw file to upload as the new original (null when re-cropping)
+    let currentOriginalUrl = null; // original_image_url of the row being edited (null when adding)
+
+    const cropperBackdrop = document.getElementById("cropper-backdrop");
+    const cropperImage = document.getElementById("cropper-image");
+    const recropBtn = document.getElementById("recrop-btn");
+
+    function closeCropper() {
+      if (cropper) { cropper.destroy(); cropper = null; }
+      cropperBackdrop.classList.remove("show");
+    }
+
+    function openCropperFromSrc(src) {
+      cropperImage.onload = () => {
+        if (cropper) cropper.destroy();
+        cropper = new Cropper(cropperImage, {
+          aspectRatio: 3 / 4,
+          viewMode: 1,
+          autoCropArea: 1,
+          movable: true,
+          zoomable: true,
+          scalable: false,
+          rotatable: false,
+          background: false,
+        });
+      };
+      cropperImage.src = src;
+      cropperBackdrop.classList.add("show");
+    }
+
+document.getElementById("f-photo").addEventListener("change", e => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      toast("Photo must be an image", "error");
+      e.target.value = "";
+      return;
+    }
+
+    if (file.size > 10 * 1024 * 1024) {
+      toast("Photo must be under 10 MB before cropping", "error");
+      e.target.value = "";
+      return;
+    }
+
+    // store ORIGINAL uploaded image
+    pendingOriginal = file;
+
+    openCropperFromSrc(URL.createObjectURL(file));
+  });
+
+ recropBtn.addEventListener("click", async () => {
+    if (!currentOriginalUrl) {
+      toast("No original image found", "error");
+      return;
+    }
+
+    try {
+      const res = await fetch(currentOriginalUrl, {
+        mode: "cors"
+      });
+
+      if (!res.ok) throw new Error("Fetch failed");
+
+      const blob = await res.blob();
+
+      // no new original upload
+      pendingOriginal = null;
+
+      cropperImage.crossOrigin = "anonymous";
+
+      openCropperFromSrc(URL.createObjectURL(blob));
+
+    } catch (err) {
+      console.error(err);
+      toast("Could not load original photo", "error");
+    }
+  });
+
+    document.getElementById("cropper-apply").addEventListener("click", () => {
+      if (!cropper) return;
+      cropper.getCroppedCanvas({
+        maxWidth: 1200,
+        maxHeight: 1600,
+        imageSmoothingQuality: "high",
+      }).toBlob(blob => {
+        croppedBlob = blob;
+        preview.style.backgroundImage = `url('${URL.createObjectURL(blob)}')`;
+        closeCropper();
+      }, "image/jpeg", 0.9);
+    });
+
+    document.getElementById("cropper-cancel").addEventListener("click", () => {
+      document.getElementById("f-photo").value = "";
+      croppedBlob = null;
+      pendingOriginal = null;
+      closeCropper();
+    });
+
+    cropperBackdrop.addEventListener("click", e => {
+      if (e.target === cropperBackdrop) {
+        document.getElementById("f-photo").value = "";
+        croppedBlob = null;
+        pendingOriginal = null;
+        closeCropper();
+      }
     });
 
     // ---------- Save (create / update) ----------
     form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const saveBtn = document.getElementById("save-btn");
-      saveBtn.disabled = true;
-      saveBtn.textContent = "Saving…";
+  e.preventDefault();
 
-      try {
-        const id = fId.value || null;
-        const payload = {
-          name:     document.getElementById("f-name").value.trim(),
-          title:    document.getElementById("f-title").value.trim(),
-          group:    document.getElementById("f-group").value,
-          year:     document.getElementById("f-year").value.trim() || null,
-          major:    document.getElementById("f-major").value.trim() || null,
-          email:    document.getElementById("f-email").value.trim() || null,
-          linkedin: document.getElementById("f-linkedin").value.trim() || null,
-          hobbies:  document.getElementById("f-hobbies").value.trim() || null,
-        };
+  const saveBtn = document.getElementById("save-btn");
 
-        // Handle photo upload if a new file was chosen
-        const photoFile = document.getElementById("f-photo").files[0];
-        if (photoFile) {
-          if (!photoFile.type.startsWith("image/")) {
-            throw new Error("Photo must be an image");
-          }
-          if (photoFile.size > 5 * 1024 * 1024) {
-            throw new Error("Photo must be under 5 MB");
-          }
-          const url = await uploadPhoto(photoFile, payload.name);
-          payload.image_url = url;
-        }
+  saveBtn.disabled = true;
+  saveBtn.textContent = "Saving…";
 
-        let error;
-        if (id) {
-          ({ error } = await sb.from("members").update(payload).eq("id", id));
-        } else {
-          ({ error } = await sb.from("members").insert(payload));
-        }
-        if (error) throw error;
+  try {
+    const id = fId.value || null;
 
-        toast(id ? "Member updated" : "Member added", "success");
-        closeModal();
-        await loadRoster();
-      } catch (err) {
-        console.error(err);
-        toast(err.message || "Save failed", "error");
-      } finally {
-        saveBtn.disabled = false;
-        saveBtn.textContent = "Save";
-      }
-    });
-
-    async function uploadPhoto(file, memberName) {
-      const ext = (file.name.split(".").pop() || "jpg").toLowerCase();
-      const slug = (memberName || "member")
-        .toLowerCase().trim().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
-      const filename = `${slug}-${Date.now()}.${ext}`;
-
-      const { error: upErr } = await sb.storage
-        .from(PHOTO_BUCKET)
-        .upload(filename, file, { cacheControl: "3600", upsert: false });
-      if (upErr) throw upErr;
-
-      const { data } = sb.storage.from(PHOTO_BUCKET).getPublicUrl(filename);
-      return data.publicUrl;
+    if (!id && !isAdmin) {
+      throw new Error("Only admins can add members");
     }
 
-    // ---------- Delete ----------
+    if (id && !isAdmin && id !== currentMemberId) {
+      throw new Error("You can only edit your own profile");
+    }
+
+    // Load existing member if editing
+    let existingMember = null;
+
+    if (id) {
+      const { data, error } = await sb
+        .from("members")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+      if (error) throw error;
+
+      existingMember = data;
+    }
+
+    const payload = {
+      name: document.getElementById("f-name").value.trim(),
+      title: document.getElementById("f-title").value.trim(),
+      year: document.getElementById("f-year").value.trim() || null,
+      major: document.getElementById("f-major").value.trim() || null,
+      linkedin: document.getElementById("f-linkedin").value.trim() || null,
+      hobbies: document.getElementById("f-hobbies").value.trim() || null,
+    };
+
+    if (isAdmin) {
+      payload.group = document.getElementById("f-group").value;
+      payload.email = document.getElementById("f-email").value.trim() || null;
+    }
+
+    // Upload ORIGINAL image only if user uploaded new file
+    if (pendingOriginal) {
+      const originalUrl = await uploadPhoto(
+        pendingOriginal,
+        `${payload.name}-original`
+      );
+
+      payload.original_image_url = originalUrl;
+
+      // delete old original image
+      if (
+        existingMember?.original_image_url &&
+        existingMember.original_image_url.includes(`/${PHOTO_BUCKET}/`)
+      ) {
+        const oldPath = existingMember.original_image_url
+          .split(`/${PHOTO_BUCKET}/`)[1];
+
+        if (oldPath) {
+          await sb.storage
+            .from(PHOTO_BUCKET)
+            .remove([oldPath])
+            .catch(() => {});
+        }
+      }
+    }
+
+    // Upload new cropped image
+    if (croppedBlob) {
+
+      // delete old cropped image first
+      if (
+        existingMember?.image_url &&
+        existingMember.image_url.includes(`/${PHOTO_BUCKET}/`)
+      ) {
+        const oldPath = existingMember.image_url
+          .split(`/${PHOTO_BUCKET}/`)[1];
+
+        if (oldPath) {
+          await sb.storage
+            .from(PHOTO_BUCKET)
+            .remove([oldPath])
+            .catch(() => {});
+        }
+      }
+
+      const croppedFile = new File(
+        [croppedBlob],
+        `cropped-${Date.now()}.jpg`,
+        { type: "image/jpeg" }
+      );
+
+      const croppedUrl = await uploadPhoto(
+        croppedFile,
+        payload.name
+      );
+
+      payload.image_url = croppedUrl;
+    }
+
+    let error;
+
+    if (id) {
+      ({ error } = await sb
+        .from("members")
+        .update(payload)
+        .eq("id", id));
+    } else {
+      ({ error } = await sb
+        .from("members")
+        .insert(payload));
+    }
+
+    if (error) throw error;
+
+    toast(
+      id ? "Member updated" : "Member added",
+      "success"
+    );
+
+    closeModal();
+
+    await loadRoster();
+
+  } catch (err) {
+    console.error(err);
+
+    toast(
+      err.message || "Save failed",
+      "error"
+    );
+
+  } finally {
+    saveBtn.disabled = false;
+    saveBtn.textContent = "Save";
+  }
+});
+
+   async function uploadPhoto(file, memberName) {
+    const ext = (
+      file.name.split(".").pop() || "jpg"
+    ).toLowerCase();
+
+    const slug = (memberName || "member")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^a-z0-9-]/g, "");
+
+    const filename = `${slug}-${Date.now()}.${ext}`;
+
+    const { error: upErr } = await sb.storage
+      .from(PHOTO_BUCKET)
+      .upload(filename, file, {
+        cacheControl: "3600",
+        upsert: false
+      });
+
+    if (upErr) throw upErr;
+
+    const { data } = sb.storage
+      .from(PHOTO_BUCKET)
+      .getPublicUrl(filename);
+
+    return data.publicUrl;
+  }
+
+    // ---------- Delete (admin only) ----------
     async function deleteMember(id, name, photoUrl) {
+      if (!isAdmin) return;
       if (!confirm(`Delete ${name}? This cannot be undone.`)) return;
 
-      // Best-effort: remove the photo from storage if it lives in our bucket
       if (photoUrl && photoUrl.includes(`/${PHOTO_BUCKET}/`)) {
         const path = photoUrl.split(`/${PHOTO_BUCKET}/`)[1];
         if (path) {
