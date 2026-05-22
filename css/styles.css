@@ -121,8 +121,8 @@ html, body {
     -webkit-tap-highlight-color: transparent;
 }
 
-#hamburger-icon:hover {
-    background: rgba(255, 255, 255, 0.18);
+#hamburger-icon:active {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 #hamburger-icon:focus-visible {
@@ -160,7 +160,7 @@ html, body {
     position: fixed;
     inset: 0;
     z-index: 99990;
-    background: rgba(0, 0, 0, 0.35);
+    background: transparent;
     cursor: pointer;
     pointer-events: none;
 }
@@ -225,11 +225,17 @@ body.nav-open .mobile-nav-panel {
     -webkit-tap-highlight-color: transparent;
 }
 
-.mobile-nav-link:hover,
-.mobile-nav-link:focus-visible,
 .mobile-nav-link.is-active {
     color: var(--mfb-brand, #1a3a2a);
     background-color: rgba(26, 58, 42, 0.06);
+}
+
+@media (hover: hover) {
+    .mobile-nav-link:hover,
+    .mobile-nav-link:focus-visible {
+        color: var(--mfb-brand, #1a3a2a);
+        background-color: rgba(26, 58, 42, 0.06);
+    }
 }
 
 .mobile-nav-panel__actions {
@@ -273,21 +279,27 @@ body.nav-open .mobile-nav-panel {
     border: 2px solid var(--mfb-brand, #1a3a2a);
 }
 
-.mobile-nav-btn--outline:hover,
-.mobile-nav-btn--outline:focus-visible {
-    background: rgba(26, 58, 42, 0.06);
-}
-
 .mobile-nav-btn--primary {
     color: #fff;
-    background: linear-gradient(135deg, var(--mfb-brand, #1a3a2a) 0%, var(--mfb-brand-hover, #234d35) 100%);
+    background: var(--mfb-brand, #1a3a2a);
     border: 2px solid transparent;
     box-shadow: 0 4px 14px rgba(26, 58, 42, 0.25);
 }
 
-.mobile-nav-btn--primary:hover,
-.mobile-nav-btn--primary:focus-visible {
-    background: linear-gradient(135deg, var(--mfb-brand-hover, #234d35) 0%, #2d6348 100%);
+@media (hover: hover) {
+    #hamburger-icon:hover {
+        background: rgba(255, 255, 255, 0.18);
+    }
+
+    .mobile-nav-btn--outline:hover,
+    .mobile-nav-btn--outline:focus-visible {
+        background: rgba(26, 58, 42, 0.06);
+    }
+
+    .mobile-nav-btn--primary:hover,
+    .mobile-nav-btn--primary:focus-visible {
+        background: var(--mfb-brand-hover, #234d35);
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -3653,8 +3665,28 @@ body.nav-open .mobile-nav-panel {
     .join-page .page-hero,
     .intern-page .page-hero,
     .login-page .page-hero {
-        min-height: 52vh;
-        min-height: 52dvh;
+        min-height: 58vh;
+        min-height: 58dvh;
+        overflow: hidden;
+    }
+
+    /* Fit hero photos by height on narrow screens — less aggressive crop than cover */
+    .home-page .home-s1::before,
+    .about-page .page-hero::before,
+    .services-page .page-hero::before,
+    .team-page .page-hero::before,
+    .join-page .page-hero::before,
+    .intern-page .page-hero::before,
+    .login-page .page-hero::before {
+        background-size: auto 100%;
+        background-position: center center;
+        transform: none;
+        animation: none;
+    }
+
+    .home-page .home-s4 {
+        background-size: auto 100%;
+        background-position: center center;
     }
 
     .about-page .title h1,

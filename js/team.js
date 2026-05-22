@@ -100,6 +100,7 @@ function initLeadershipPhotos(container) {
 
 function createPortraitImg(member) {
     const img = document.createElement('img');
+    img.oncontextmenu = () => false;
     img.className = 'team-portrait-img';
     img.alt = member.name;
     img.loading = 'lazy';
@@ -137,6 +138,7 @@ function createSocialLink(href, iconSrc, label) {
     }
 
     const icon = document.createElement('img');
+    icon.oncontextmenu = () => false;
     icon.src = iconSrc;
     icon.alt = '';
     icon.className = 'team-leader-photo__icon';
