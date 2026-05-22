@@ -3008,8 +3008,8 @@ body.nav-open .mobile-nav-panel {
     text-align: center;
 }
 
-.join-page .join-intro__text:last-child {
-    margin-bottom: 0;
+.join-page .join-intro__actions {
+    margin: 1.75rem 0 0;
 }
 
 .join-page .join-intro__text a {
@@ -3118,8 +3118,7 @@ body.nav-open .mobile-nav-panel {
         gap: 1rem;
     }
 
-    .join-page .join-cta--hero {
-        min-width: unset;
+    .join-page .join-intro__actions .join-cta {
         width: 100%;
         max-width: 14rem;
         padding: 0.75rem 1.5rem;
@@ -3158,12 +3157,11 @@ body.nav-open .mobile-nav-panel {
 }
 
 @media only screen and (max-width: 480px) {
-    .join-page .join-cta--hero {
+    .join-page .join-intro__actions .join-cta {
         max-width: 100%;
-        white-space: normal;
     }
 
-    .join-page .join-intro__text:last-child {
+    .join-page .join-intro__text:nth-of-type(2) {
         line-height: 1.75;
     }
 
