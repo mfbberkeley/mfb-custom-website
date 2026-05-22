@@ -5,104 +5,97 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Intern Recruitment - Microfinance at Berkeley</title>
   <link rel="icon" href="images/favicon.jpg" type="image/png">
-  <link rel="stylesheet" href="css/styles.css"> <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-<body class="join-page">
-    <!-- Navbar -->
-    <!-- Section 1 (Title)-->
-     <div class="title-section">
-     <div id="navbar"></div>
-     <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html
-        })
-     </script>
-      <div class="title">
-        <p>INTERN RECRUITMENT</p>
-        <div id="application-button-container">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfFuH7jy5hZph_rbrNaeRFj8c1r1-_qpCT7VmeIV3kDKlFF5w/viewform?usp=preview" target="_blank">Application</a>
-        </div>
-      </div>
-      </div>
+<body class="intern-page">
 
-    <!-- Section 2 (Information) changes made -->
-     <section class="join-s2">
-        <h1>SPRING 2026 INTERN RECRUITMENT IS OPEN</h1>
-        <p id="join-contact-info">If questions arise, please email <span style="font-weight: bold;">danieldo@berkeley.edu</span> or <span style="font-weight: bold;">alizehali@berkeley.edu</span>.</p>
-        <p id="join-title-details"> Be sure to check out our <a href="https://docs.google.com/document/d/1g85mN8P55Xo-bv9XrbiUBCNVB5Nc-DN-8ds-_VSaQyk/edit?tab=t.0#heading=h.aczyuw2yex2w" id="recruitment-guide" target="_blank">Recruitment Guide</a> to view answers to several frequently asked questions. We aim to demystify our interview process and better prepare all applicants!</p>
-     </section>
-    <!-- Section 3 (Timeline) -->
-     <section class="join-s3">
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-1.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Tabling</h1>
-          <h2>1/20 - 1/30</h2>
-          <p>Come visit our table on Sproul Plaza and the Memorial Glade to learn more about what we do. Here's your chance to talk to some of our members and ask questions!</p>
+  <div class="page-hero">
+    <div id="navbar"></div>
+    <div class="title-section" aria-label="Intern recruitment">
+    <div class="title">
+      <h1>Intern recruitment</h1>
+    </div>
+    </div>
+    </div>
+
+  <main class="intern-main">
+    <section class="intern-intro" aria-labelledby="intern-intro-heading">
+      <div class="intern__inner">
+        <h2 id="intern-intro-heading" class="intern-heading home-reveal">About the intern program</h2>
+        <p class="intern-intro__text home-reveal home-reveal--delay-1">
+          Our intern track is designed for students who want to explore microfinance and consulting at MFB before applying for full membership. Interns support project work, attend trainings, and learn alongside our members throughout the semester.
+        </p>
+        <p class="intern-intro__text home-reveal home-reveal--delay-2">
+          If questions arise, please email
+          <a href="mailto:micahshin@berkeley.edu">micahshin@berkeley.edu</a>
+          or
+          <a href="mailto:alizehali@berkeley.edu">alizehali@berkeley.edu</a>.
+        </p>
+      </div>
+    </section>
+
+    <section class="intern-status" aria-labelledby="intern-status-heading">
+      <div class="intern__inner">
+        <div class="intern-status__card home-reveal">
+          <p class="intern-status__badge" aria-hidden="true">Closed</p>
+          <h2 id="intern-status-heading" class="intern-status__title">Applications are not open</h2>
+          <p class="intern-status__text">
+            Intern applications are currently closed. Please check back on this page later for updates on our next recruitment cycle.
+          </p>
         </div>
       </div>
+    </section>
 
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-2.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Coffee Chats</h1>
-          <h2>3/30 - 4/3</h2>
-          <p>Schedule a coffee chat to learn more about our club intern role and ask questions directly to current members. We look forward to meeting you!</p>
-          <div class="join-button-container">
-            <a href="https://airtable.com/appvsDWapUAorGFQf/shr9Yl6WimfOb5SF2" target="_blank">Coffee Chats</a>
+    <section class="intern-cta-band" aria-label="Member recruitment">
+      <div class="intern__inner intern-cta-band__inner home-reveal">
+        <p class="intern-cta-band__lead">Interested in joining as a member instead?</p>
+        <a class="intern-cta" href="join.html">View member recruitment</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="index.html" class="site-footer__logo-link" aria-label="Microfinance at Berkeley home">
+            <img src="images/favicon.jpg" alt="Microfinance at Berkeley" class="site-footer__logo" width="44" height="44">
+          </a>
+          <div class="site-footer__brand-text">
+            <p class="site-footer__name">Microfinance at Berkeley</p>
+            <p class="site-footer__tagline">UC Berkeley's first small business consulting organization</p>
           </div>
         </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-6.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Application Due</h1>
-          <h2>4/3 | 5 PM</h2>
-          <p>Please submit your application by the deadline. Late submissions may not be considered.</p>
-        </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-7.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Interviews</h1>
-          <h2>INVITE ONLY - 4/4 - 4/5</h2>
-          <p>Interviews are 45 minutes: 25 minutes behavioral and 20 minutes case. Interview invitations and time details will be emailed Friday night.</p>
+        <div class="site-footer__social" aria-label="Social media and contact">
+          <a href="mailto:berkeleymicrofinance@gmail.com" class="site-footer__social-link" aria-label="Email Microfinance at Berkeley">
+            <img src="images/home/mail-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.facebook.com/microfinanceatberkeley/" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="images/home/facebook-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="images/home/instagram-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="images/home/linkedin-logo.png" alt="" width="20" height="20">
+          </a>
         </div>
       </div>
 
-     </section>
-    <!-- Footer -->
-     <div id="footer"></div>
-  <script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer').innerHTML = html
-    })
-  </script>
-    <script src="js/index.js"></script>
+      <div class="site-footer__legal">
+        <p class="site-footer__legal-text">
+          Microfinance at Berkeley is sponsored by the Associated Students of the University of California and the National Undergraduate Impact Investing Society.
+          We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.
+        </p>
+        <p class="site-footer__copyright">&copy; 2026 Microfinance at Berkeley</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

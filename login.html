@@ -4,50 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Microfinance at Berkeley</title>
-  <link rel="icon" href="images/favicon.jpg" type="image/jpg">
+  <link rel="icon" href="images/favicon.jpg" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/roster_editor.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
-
 </head>
-<body class="about-page">
+<body class="login-page">
 
-  <!-- Navbar -->
-  <div class="title-section">
+  <div class="page-hero">
     <div id="navbar"></div>
-    <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => { document.getElementById('navbar').innerHTML = html })
-    </script>
+    <div class="title-section" aria-label="Admin login">
     <div class="title">
-      <p>LOGIN</p>
+      <h1>Login</h1>
     </div>
-  </div>
-  <button class="btn-google" onclick="loginWithGoogle()">
-  <svg class="btn-google-icon" viewBox="0 0 24 24" aria-hidden="true">
-    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-  </svg>
-  Continue with Google
-</button>
+    </div>
+    </div>
 
+  <main class="login-main">
+    <section class="login-intro" aria-labelledby="login-intro-heading">
+      <div class="login__inner">
+        <h2 id="login-intro-heading" class="login-heading home-reveal">Admin access</h2>
+        <p class="login-intro__text home-reveal home-reveal--delay-1">
+          Sign in to manage the MFB team roster. This page is for authorized administrators only.
+        </p>
+      </div>
+    </section>
 
-  <!-- Footer -->
-  <div id="footer"></div>
-  <script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer').innerHTML = html
-    })
-  </script>
+    <section class="login-panel" aria-label="Sign in">
+      <div class="login__inner login-panel__inner">
+        <div class="login-card">
+          <p class="login-card__eyebrow">Sign in</p>
+          <h3 class="login-card__title">Welcome back</h3>
+          <p class="login-card__subtitle">Use Google or your email and password.</p>
 
+          <button type="button" class="login-card__google btn-google" onclick="loginWithGoogle()">
+            <svg class="btn-google-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+            </svg>
+            Continue with Google
+          </button>
+
+          <div class="login-card__divider" aria-hidden="true"><span>or</span></div>
+
+          <form class="login-card__fields" onsubmit="event.preventDefault(); login();" novalidate>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@berkeley.edu" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" placeholder="Your password">
+
+            <button type="submit" class="login-card__btn login-card__btn--primary">Sign in</button>
+          </form>
+
+          <p class="login-card__helper">Prefer a magic link? Enter your email above and we'll send a one-time sign-in link.</p>
+          <button type="button" class="login-card__btn login-card__btn--secondary" onclick="sendLink()">Email me a link</button>
+
+          <p id="status" class="login-card__status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="index.html" class="site-footer__logo-link" aria-label="Microfinance at Berkeley home">
+            <img src="images/favicon.jpg" alt="Microfinance at Berkeley" class="site-footer__logo" width="44" height="44">
+          </a>
+          <div class="site-footer__brand-text">
+            <p class="site-footer__name">Microfinance at Berkeley</p>
+            <p class="site-footer__tagline">UC Berkeley's first small business consulting organization</p>
+          </div>
+        </div>
+        <div class="site-footer__social" aria-label="Social media and contact">
+          <a href="mailto:berkeleymicrofinance@gmail.com" class="site-footer__social-link" aria-label="Email Microfinance at Berkeley">
+            <img src="images/home/mail-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.facebook.com/microfinanceatberkeley/" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="images/home/facebook-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="images/home/instagram-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="images/home/linkedin-logo.png" alt="" width="20" height="20">
+          </a>
+        </div>
+      </div>
+
+      <div class="site-footer__legal">
+        <p class="site-footer__legal-text">
+          Microfinance at Berkeley is sponsored by the Associated Students of the University of California and the National Undergraduate Impact Investing Society.
+          We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.
+        </p>
+        <p class="site-footer__copyright">&copy; 2026 Microfinance at Berkeley</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
   <script src="js/index.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script>
@@ -67,7 +127,7 @@
     const status = document.getElementById("status");
     function setStatus(msg, type = "") {
       status.textContent = msg;
-      status.className = type;
+      status.className = "login-card__status" + (type ? " login-card__status--" + type : "");
     }
 
     async function login() {
@@ -102,22 +162,9 @@
       setStatus("Check your email for the login link.", "success");
     }
 
-    // Submit on Enter from either input
-    ["email", "password"].forEach(id => {
-      document.getElementById(id).addEventListener("keydown", e => {
-        if (e.key === "Enter") login();
-      });
+    document.getElementById("password").addEventListener("keydown", e => {
+      if (e.key === "Enter") login();
     });
-    async function loginWithGoogle() {
-  const { error } = await supabaseClient.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: window.location.origin + "/admin.html"
-    }
-  });
-  if (error) setStatus(error.message, "error");
-}
   </script>
-  
 </body>
 </html>

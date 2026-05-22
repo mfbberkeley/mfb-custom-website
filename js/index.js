@@ -1,8 +1,3 @@
-// For changing navbar for mobile view
-function toggleMobileMenu(menu) {
-    menu.classList.toggle('open');
-}
-
 // Animating numbers
 const animationDuration = 2000;
 const steps = 100; 
@@ -48,24 +43,44 @@ counters.forEach(counter => {
     observer.observe(counter);
 });
 
-// Animated slide
-const buttons = document.querySelectorAll("[data-carousel-button]")
+// Scroll reveal (stats, who we are, where we work)
+const revealObserver = new IntersectionObserver(
+    (entries, obs) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+);
 
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        const offset = button.dataset.carouselButton === "next" ? 1 : -1
-        const slides = button
-        .closest("[data-carousel]")
-        .querySelector("[data-slides]")
+document.querySelectorAll('.home-reveal').forEach((el) => {
+    revealObserver.observe(el);
+});
 
-        const activeSlide = slides.querySelector("[data-active]")
+// What we do — staggered card fade-up (left to right)
+const s4Grid = document.querySelector('.home-s4__grid');
+if (s4Grid) {
+    const s4Cards = [...s4Grid.querySelectorAll('.home-s4-card-reveal')];
+    const s4StaggerMs = 150;
 
-        let newIndex = [...slides.children].indexOf(activeSlide) + offset
+    const s4GridObserver = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    s4Cards.forEach((card, index) => {
+                        setTimeout(() => {
+                            card.classList.add('is-visible');
+                        }, index * s4StaggerMs);
+                    });
+                    obs.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
 
-        if (newIndex < 0) newIndex = slides.children.length - 1
-        if (newIndex >= slides.children.length) newIndex = 0
-
-        slides.children[newIndex].dataset.active = true
-        delete activeSlide.dataset.active
-    })
-})
+    s4GridObserver.observe(s4Grid);
+}

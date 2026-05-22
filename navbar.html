@@ -1,33 +1,38 @@
-<div class="navbar">
-<header>
-<a href="index.html">
-<img loading="lazy" src="images/home/mfblogo.png" alt="MFB Logo" id="mfb-logo">
-</a>
-<nav>
-<ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="team.html">Team</a></li>
-    <li><a href="join.html">Join</a></li>
-    <li><a href="intern.html">Intern</a></li>
-    <li><a href="admin.html">Login</a></li>
-</ul>
-</nav>
-<!-- Mobile Menu -->
-<div id="hamburger-icon" onclick="toggleMobileMenu(this)">
-<div class="bar1"></div>
-<div class="bar2"></div>
-<div class="bar3"></div>
-<ul class="mobile-menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="team.html">Team</a></li>
-    <li><a href="join.html">Join</a></li>
-    <li><a href="intern.html">Intern</a></li>
-    <li><a href="admin.html">Login</a></li>
-</ul>
-</div>
-</header>
+<div class="navbar" data-component="mfb-navbar">
+  <header>
+    <a href="index.html" class="navbar__logo">
+      <img loading="lazy" src="images/home/mfblogo.png" alt="Microfinance at Berkeley" id="mfb-logo">
+    </a>
+    <nav class="navbar__desktop" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" data-nav="index.html">Home</a></li>
+        <li><a href="about.html" data-nav="about.html">About</a></li>
+        <li><a href="services.html" data-nav="services.html">Services</a></li>
+        <li><a href="team.html" data-nav="team.html">Team</a></li>
+        <li><a href="join.html" data-nav="join.html">Join</a></li>
+        <li><a href="intern.html" data-nav="intern.html">Intern</a></li>
+        <li><a href="admin.html" data-nav="admin.html">Login</a></li>
+      </ul>
+    </nav>
+    <div class="navbar__mobile">
+      <button type="button" id="hamburger-icon" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-panel">
+        <span class="bar1" aria-hidden="true"></span>
+        <span class="bar2" aria-hidden="true"></span>
+        <span class="bar3" aria-hidden="true"></span>
+      </button>
+      <div class="mobile-nav-backdrop" aria-hidden="true"></div>
+      <div id="mobile-nav-panel" class="mobile-nav-panel" role="dialog" aria-modal="true" aria-label="Menu" aria-hidden="true">
+        <nav class="mobile-nav-panel__links" aria-label="Mobile navigation">
+          <a href="index.html" class="mobile-nav-link" data-nav="index.html">Home</a>
+          <a href="about.html" class="mobile-nav-link" data-nav="about.html">About</a>
+          <a href="services.html" class="mobile-nav-link" data-nav="services.html">Services</a>
+          <a href="team.html" class="mobile-nav-link" data-nav="team.html">Team</a>
+          <a href="intern.html" class="mobile-nav-link" data-nav="intern.html">Intern</a>
+        </nav>
+        <div class="mobile-nav-panel__actions">
+          <a href="join.html" class="mobile-nav-btn mobile-nav-btn--primary" data-nav="join.html">Join us</a>
+        </div>
+      </div>
+    </div>
+  </header>
 </div>

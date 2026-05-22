@@ -5,86 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About - Microfinance at Berkeley</title>
   <link rel="icon" href="images/favicon.jpg" type="image/jpg">
-  <link rel="stylesheet" href="css/styles.css"> <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
-
-
 <body class="about-page">
-    <!-- Navbar -->
-    <!-- Section 1 (Title)-->
-     <div class="title-section">
-     <div id="navbar"></div>
-     <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html
-        })
-     </script>
 
-      <!-- Text -->
-      <div class="title">
-        <p>ABOUT</p>
-      </div>
+  <div class="page-hero">
+    <div id="navbar"></div>
+    <div class="title-section" aria-label="About Microfinance at Berkeley">
+    <div class="title">
+      <h1>About us</h1>
+    </div>
+    </div>
     </div>
 
-    <!-- Section 2 (About Description) -->
-    <section class="about-description">
-        <p>We deliver consulting and microloan support focused on long-term, sustainable growth. Each semester, we take on a select number of consulting projects while working to expand financial access for local businesses through Kiva-backed lending. By pairing strategy with capital, we aim to create meaningful and lasting economic impact in our community.</p>
-    </section>
+  <section class="about-mission" aria-labelledby="about-mission-heading">
+    <div class="about__inner">
+      <div class="about-mission__grid">
+        <div class="home-reveal about-mission__content">
+          <p class="about-eyebrow">Our mission</p>
+          <h2 id="about-mission-heading" class="about-heading about-mission__heading">Consulting and capital for local growth.</h2>
+          <p class="about-mission__body">
+            We deliver consulting and microloan support focused on long-term, sustainable growth. Each semester, we take on a select number of consulting projects while working to expand financial access for local businesses through Kiva-backed lending. By pairing strategy with capital, we aim to create meaningful and lasting economic impact in our community.
+          </p>
+        </div>
+        <div class="home-reveal home-reveal--delay-1 about-mission__media">
+          <img
+            src="images/about/alumns-grad3.JPG"
+            alt="Microfinance at Berkeley alumni at graduation"
+            class="about-mission__image"
+            loading="lazy"
+          >
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Section 3 (History) -->
-    <section class="history">
-        <div class="history-title">
-            <p>HISTORY</p>
+  <section class="about-history" aria-labelledby="about-history-heading">
+    <div class="about__inner">
+      <div class="about-history__grid">
+        <div class="home-reveal about-history__media">
+          <img
+            src="images/about/alumns-grad.png"
+            alt="Microfinance at Berkeley alumni at graduation"
+            class="about-history__image"
+            loading="lazy"
+          >
         </div>
-        <div class="history-content">
-            <div class="history-image-container">
-                <img loading="lazy" src="images/about/alums-grad.png" alt="picture of alums">
-            </div>
-            <div class="history-content-box">
-                <div class="history-content-box-1">
-                    <p>MFB was founded in 2012 to support organizations and entrepreneurship in the local Bay Area.</p>
-                </div>
-                <div class="history-content-box-2">
-                    <p>Founded in 2012, Microfinance at Berkeley (MFB) provides financial and strategic consulting to organizations across industries. Our members apply varied academic perspectives and analytical skill sets to deliver thoughtful, data-driven solutions.</p>
-                </div>
-            </div>
+        <div class="home-reveal home-reveal--delay-1 about-history__copy">
+          <p class="about-eyebrow">Our history</p>
+          <h2 id="about-history-heading" class="about-heading about-history__heading">Built at Berkeley since 2012.</h2>
+          <p class="about-history__lead">MFB was founded in 2012 to support organizations and entrepreneurship in the local Bay Area.</p>
+          <p class="about-history__body">Microfinance at Berkeley provides financial and strategic consulting to organizations across industries. Our members apply varied academic perspectives and analytical skill sets to deliver thoughtful, data-driven solutions.</p>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Section 4 (Core Values)-->
-    <section class="core-values">
-        <div class="core-values-title">
-            <p>CORE VALUES</p>
+  <section class="about-values" aria-labelledby="about-values-heading">
+    <div class="about__inner">
+      <div class="about-values__intro home-reveal">
+        <p class="about-eyebrow">What we stand for</p>
+        <h2 id="about-values-heading" class="about-heading about-values__heading">Core values</h2>
+      </div>
+      <div class="about-values__grid">
+        <article class="about-values__card home-reveal home-reveal--delay-1">
+          <h3 class="about-values__card-title">Empathy</h3>
+          <p class="about-values__card-text">We prioritize listening to and learning from the stories of local business owners, aligning our teams closely with our clients' goals and long-term success.</p>
+        </article>
+        <article class="about-values__card home-reveal home-reveal--delay-2">
+          <h3 class="about-values__card-title">Community</h3>
+          <p class="about-values__card-text">We are passionate about contributing to the local business community by sharing knowledge drawn from our collective personal and professional experiences.</p>
+        </article>
+        <article class="about-values__card home-reveal home-reveal--delay-3">
+          <h3 class="about-values__card-title">Integrity</h3>
+          <p class="about-values__card-text">We act with integrity by choosing what is right over what is easy, holding ourselves to high standards of honesty, accountability, and transparent communication.</p>
+        </article>
+      </div>
+      <div class="about-values__cta home-reveal home-reveal--delay-2">
+        <p class="about-values__cta-lead">Ready to make an impact?</p>
+        <a href="join.html" class="about-cta">Join us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="index.html" class="site-footer__logo-link" aria-label="Microfinance at Berkeley home">
+            <img src="images/favicon.jpg" alt="Microfinance at Berkeley" class="site-footer__logo" width="44" height="44">
+          </a>
+          <div class="site-footer__brand-text">
+            <p class="site-footer__name">Microfinance at Berkeley</p>
+            <p class="site-footer__tagline">UC Berkeley's first small business consulting organization</p>
+          </div>
         </div>
-        <div class="core-values-content">
-            <div class="value-item">
-                <h2>Empathy</h2>
-                <p>We prioritize listening to and learning from the stories of local business owners, aligning our teams closely with our clients' goals and long-term success.</p>
-            </div>
-            <div class="value-item">
-                <h2>Community</h2>
-                <p>We are passionate about contributing to the local business community by sharing knowledge drawn from our collective personal and professional experiences.</p>
-            </div>
-            <div class="value-item">
-                <h2>Integrity</h2>
-                <p>We act with integrity by choosing what is right over what is easy, holding ourselves to high standards of honesty, accountability, and transparent communication.</p>
-            </div>
+        <div class="site-footer__social" aria-label="Social media and contact">
+          <a href="mailto:berkeleymicrofinance@gmail.com" class="site-footer__social-link" aria-label="Email Microfinance at Berkeley">
+            <img src="images/home/mail-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.facebook.com/microfinanceatberkeley/" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="images/home/facebook-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="images/home/instagram-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="images/home/linkedin-logo.png" alt="" width="20" height="20">
+          </a>
         </div>
-    </section>
-    <!-- Footer -->
-    <div id="footer"></div>
-    <script>
-    fetch('/footer.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('footer').innerHTML = html
-      })
-    </script>
-    <script src="js/index.js"></script>
+      </div>
+
+      <div class="site-footer__legal">
+        <p class="site-footer__legal-text">
+          Microfinance at Berkeley is sponsored by the Associated Students of the University of California and the National Undergraduate Impact Investing Society.
+          We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.
+        </p>
+        <p class="site-footer__copyright">&copy; 2026 Microfinance at Berkeley</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/navbar.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

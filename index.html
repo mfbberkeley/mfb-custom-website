@@ -6,142 +6,233 @@
   <title>Microfinance at Berkeley</title>
   <link rel="icon" href="images/favicon.jpg" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="preload" href="images/home/sp26groupphoto.jpg" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="home-page">
-    <!-- Navbar -->
-    <!-- Section 1 (Title)-->
-     <div class="home-s1">
-     <div id="navbar"></div>
-     <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html
-        })
-     </script>
-      <!-- Text -->
-      <div class="home-s1-title">
-        <p>MICROFINANCE AT <br>BERKELEY</p>
-      </div>
-      <div class="home-s1-tagline">
-        <p>UC Berkeley's first small business consulting organization</p>
-      </div>
-      <!-- Join Us Button -->
-       <div class="home-s1-button-container">
-        <a href="join.html">JOIN US</a>
-       </div>
-      </div>
-
-    <!-- Section 2 (Statistics) -->
-     <!-- Statistic Boxes -->
-    <section class="home-s2">
-      <div class="home-s2-square">
-        <div class="home-s2-square-number">
-          <span class="home-s2-square-animated-number" data-target="309">0</span><span class="home-s2-square-suffix">K</span>
+    <section class="home-s1" aria-label="Introduction">
+      <div id="navbar"></div>
+      <div class="home-s1-content">
+        <div class="home-s1-title">
+          <h1>Microfinance at <br>Berkeley</h1>
         </div>
-        <div class="home-s2-square-text">Amount in Kiva Loans</div>
-      </div>
-      <div class="home-s2-square">
-        <div class="home-s2-square-number">
-          <span class="home-s2-square-animated-number" data-target="84">0</span>
+        <div class="home-s1-tagline">
+          <p>UC Berkeley's first small business consulting organization</p>
         </div>
-        <div class="home-s2-square-text">Clients</div>
-      </div>
-      <div class="home-s2-square">
-        <div class="home-s2-square-number">
-          <span class="home-s2-square-animated-number" data-target="14">0</span>
+        <div class="home-s1-actions">
+          <a class="home-s1-btn home-s1-btn-primary" href="join.html">Join Us</a>
+          <a class="home-s1-btn home-s1-btn-secondary" href="about.html">Learn More</a>
         </div>
-        <div class="home-s2-square-text">Years</div>
-      </div>
-      <div class="home-s2-square">
-        <div class="home-s2-square-number">
-          <span class="home-s2-square-animated-number" data-target="1">0</span>
-        </div>
-        <div class="home-s2-square-text">Family</div>
       </div>
     </section>
-    <!-- Section 3 (Who We Are) -->
-    <section class="home-s3">
-      <div class="home-s3-title">
-        <p>WHO WE ARE</p>
+
+    <!-- Section 2 (Statistics) -->
+    <section class="home-s2" id="home-s2" aria-labelledby="home-s2-heading">
+      <div class="home-s2__inner">
+        <header class="home-reveal home-s2__header">
+          <h2 id="home-s2-heading" class="home-s2__heading">Our impact</h2>
+        </header>
+        <div class="home-s2__grid">
+          <figure class="home-s2-stat home-reveal home-reveal--delay-1">
+            <div class="home-s2-stat__number">
+              <span class="home-s2-square-animated-number" data-target="309">0</span><span class="home-s2-stat__suffix">K</span>
+            </div>
+            <figcaption class="home-s2-stat__label">Kiva loans facilitated</figcaption>
+          </figure>
+          <figure class="home-s2-stat home-reveal home-reveal--delay-2">
+            <div class="home-s2-stat__number">
+              <span class="home-s2-square-animated-number" data-target="84">0</span>
+            </div>
+            <figcaption class="home-s2-stat__label">Clients served</figcaption>
+          </figure>
+          <figure class="home-s2-stat home-reveal home-reveal--delay-3">
+            <div class="home-s2-stat__number">
+              <span class="home-s2-square-animated-number" data-target="14">0</span>
+            </div>
+            <figcaption class="home-s2-stat__label">Years of impact</figcaption>
+          </figure>
+          <figure class="home-s2-stat home-reveal home-reveal--delay-4">
+            <div class="home-s2-stat__number">
+              <span class="home-s2-square-animated-number" data-target="1">0</span>
+            </div>
+            <figcaption class="home-s2-stat__label">One community</figcaption>
+          </figure>
+        </div>
       </div>
-      <div class="home-s3-content">
-        <p>Founded in 2012, Microfinance at Berkeley is a student-run, nonprofit business organization that delivers finance and consulting services to organizations across the private sector. Our team of UC Berkeley undergraduates is passionate about fostering entrepreneurship, innovation, and long-term impact.</p>
-        <img src="images/home/all-pms.jpg" alt="picture of pms">
+    </section>
+
+    <!-- Section 3 (Who We Are) -->
+    <section class="home-s3" aria-labelledby="home-s3-heading">
+      <div class="home-s3__inner">
+        <div class="home-s3__grid">
+          <div class="home-reveal home-s3__media">
+            <img
+              src="images/home/all-pms.jpg"
+              alt="Microfinance at Berkeley project managers"
+              class="home-s3__image"
+              loading="lazy"
+            >
+          </div>
+          <div class="home-reveal home-reveal--delay-1 home-s3__copy">
+            <p class="home-s3__eyebrow">Who we are</p>
+            <h2 id="home-s3-heading" class="home-s3__heading">Student-led consulting since 2012.</h2>
+            <p class="home-s3__text">Founded in 2012, Microfinance at Berkeley is a student-run, nonprofit business organization that delivers finance and consulting services to organizations across the private sector. Our team of UC Berkeley undergraduates is passionate about fostering entrepreneurship, innovation, and long-term impact.</p>
+            <a href="about.html" class="home-s3__cta">Our story</a>
+          </div>
+        </div>
       </div>
     </section>
     <!-- Section 4 (What We Do) -->
-     <section class="home-s4">
-      <div class="home-s4-title">
-        <p>WHAT WE DO</p>
+    <section class="home-s4" aria-labelledby="home-s4-heading">
+      <div class="home-s4__overlay" aria-hidden="true"></div>
+      <div class="home-s4__inner">
+        <header class="home-reveal home-s4__header">
+          <h2 id="home-s4-heading" class="home-s4__heading">What we do</h2>
+          <p class="home-s4__subheading">Consulting, professional growth, and a community that lasts.</p>
+        </header>
+        <div class="home-s4__grid">
+          <article class="home-s4-card home-s4-card-reveal">
+            <div class="home-s4-card__media">
+              <img src="images/home/community-image.jpg" alt="MFB members collaborating on a consulting project" loading="lazy">
+            </div>
+            <div class="home-s4-card__body">
+              <h3 class="home-s4-card__title">Our work</h3>
+              <p class="home-s4-card__text">MFB provides consulting services to organizations at different stages of growth, helping small businesses access loans while supporting innovation and long-term success.</p>
+            </div>
+          </article>
+          <article class="home-s4-card home-s4-card-reveal">
+            <div class="home-s4-card__media">
+              <img src="images/home/professional-image-update.JPG" alt="MFB members developing professional skills" class="home-s4-card__img--professional" loading="lazy">
+            </div>
+            <div class="home-s4-card__body">
+              <h3 class="home-s4-card__title">Develop professionally</h3>
+              <p class="home-s4-card__text">Members gain hands-on experience through semester-long consulting projects, structured new-member training, alumni-led workshops, and technical skill development.</p>
+            </div>
+          </article>
+          <article class="home-s4-card home-s4-card-reveal">
+            <div class="home-s4-card__media">
+              <img src="images/home/friendship-image-update.jpeg" alt="MFB members building friendships" loading="lazy">
+            </div>
+            <div class="home-s4-card__body">
+              <h3 class="home-s4-card__title">Create friendships</h3>
+              <p class="home-s4-card__text">MFB fosters a close-knit community where members build meaningful connections through shared experiences, collaboration, and friendships that last beyond college.</p>
+            </div>
+          </article>
+        </div>
       </div>
-      <!-- Desktop View -->
-      <div class="home-s4-info-container">
-        <div class="home-s4-info-item">
-          <img src="images/home/community-image.jpg" alt="give back to the community">
-          <h2>Our Work</h2>
-          <p>MFB provides consulting services to organizations at different stages of growth, helping small businesses access loans while supporting innovation and long-term success.</p>
-        </div> 
-        <div class="home-s4-info-item">
-          <img src="images/home/professional-image.jpg" alt="develop professionally">
-          <h2>Develop <br>Professionally</h2>
-          <p>Members gain hands-on experience through semester-long consulting projects, structured new-member training, alumni-led workshops, and technical skill development..</p>
-        </div> 
-        <div class="home-s4-info-item">
-          <img src="images/home/friendship-image.jpg" alt="create lasting friendships">
-          <h2>Create <br>Friendships</h2>
-          <p>MFB fosters a close-knit community where members build meaningful connections through shared experiences, collaboration, and friendships that last beyond college.</p>
-        </div> 
-      </div>
-      <!-- Mobile View -->
-      <div class="home-s4-carousel-container" data-carousel>
-        <button class="home-s4-carousel-button prev" data-carousel-button="prev">
-          <img src="images/home/left-arrow.png">
-        </button>
-        <div class="home-s4-slides-container" data-slides>
-          <div class="home-s4-slide" data-active>
-            <img src="images/home/community-image.jpg" alt="give back to the community">
-            <h2>Our Work</h2>
-            <p>MFB provides consulting services to organizations at different stages of growth, helping small businesses access loans while supporting innovation and long-term success.</p>
-          </div> 
-          <div class="home-s4-slide">
-            <img src="images/home/professional-image.jpg" alt="develop professionally">
-            <h2>Develop <br>Professionally</h2>
-            <p>Members gain hands-on experience through semester-long consulting projects, structured new-member training, alumni-led workshops, and technical skill development..</p>
-          </div> 
-          <div class="home-s4-slide">
-            <img src="images/home/friendship-image.jpg" alt="create lasting friendships">
-            <h2>Create <br>Friendships</h2>
-            <p>MFB fosters a close-knit community where members build meaningful connections through shared experiences, collaboration, and friendships that last beyond college.</p>
-          </div>
-        </div> 
-      <button class="home-s4-carousel-button next" data-carousel-button="next">
-        <img src="images/home/right-arrow.png">
-      </button>
-      </div>
-     </section>
+    </section>
     <!-- Section 5 (Where We Work) -->
-     <section class="home-s5">
-      <div class="home-s5-title">
-        <h1>WHERE WE WORK</h1>
-        <h2>INTERNSHIPS AND FULL-TIME PLACEMENT</h2>
+    <section class="home-s5" aria-labelledby="home-s5-heading">
+      <div class="home-s5-header">
+        <div class="home-reveal home-s5-header-main">
+          <p class="home-s5-eyebrow">Where we work</p>
+          <h2 id="home-s5-heading" class="home-s5-heading">Internships and <em>full-time</em> placement.</h2>
+        </div>
+        <div class="home-reveal home-reveal--delay-1 home-s5-header-aside">
+          <p>A decade of alumni building careers in consulting, finance, and tech, and giving back to the next class along the way.</p>
+        </div>
       </div>
-      <div class="home-s5-image-container">
-        <img src="images/home/companies-image.png" alt="companies">
+
+      <div class="home-s5-marquees">
+        <div class="home-s5-marquee-fade home-s5-marquee-fade--left" aria-hidden="true"></div>
+        <div class="home-s5-marquee-fade home-s5-marquee-fade--right" aria-hidden="true"></div>
+
+        <div class="home-reveal home-reveal--delay-2 home-s5-marquee-reveal">
+        <div class="home-s5-marquee-row">
+          <div class="home-s5-marquee-track" style="--marquee-duration: 30s; --marquee-direction: normal;">
+            <span class="home-s5-logo home-s5-logo--sans-medium">Google</span>
+            <span class="home-s5-logo home-s5-logo--display">Goldman Sachs</span>
+            <span class="home-s5-logo home-s5-logo--display-italic">J.P. Morgan</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold">BlackRock</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Meta</span>
+            <span class="home-s5-logo home-s5-logo--display">McKinsey &amp; Company</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium-wide">Morgan Stanley</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced">BCG</span>
+            <span class="home-s5-logo home-s5-logo--display-italic-medium">PwC</span>
+            <span class="home-s5-logo home-s5-logo--sans-light">Apple</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Google</span>
+            <span class="home-s5-logo home-s5-logo--display">Goldman Sachs</span>
+            <span class="home-s5-logo home-s5-logo--display-italic">J.P. Morgan</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold">BlackRock</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Meta</span>
+            <span class="home-s5-logo home-s5-logo--display">McKinsey &amp; Company</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium-wide">Morgan Stanley</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced">BCG</span>
+            <span class="home-s5-logo home-s5-logo--display-italic-medium">PwC</span>
+            <span class="home-s5-logo home-s5-logo--sans-light">Apple</span>
+          </div>
+        </div>
+
+        <div class="home-s5-marquee-row">
+          <div class="home-s5-marquee-track" style="--marquee-duration: 38s; --marquee-direction: reverse;">
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced-sm">KPMG</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced">IBM</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold-caps">US Bank</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-caps-wide">Netflix</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Salesforce</span>
+            <span class="home-s5-logo home-s5-logo--sans-light-italic">Citi</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold">Intuit</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-lowercase">amazon</span>
+            <span class="home-s5-logo home-s5-logo--display">Wells Fargo</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Bank of America</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold">Uber</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced-sm">KPMG</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-spaced">IBM</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold-caps">US Bank</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-caps-wide">Netflix</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Salesforce</span>
+            <span class="home-s5-logo home-s5-logo--sans-light-italic">Citi</span>
+            <span class="home-s5-logo home-s5-logo--sans-semibold">Intuit</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold-lowercase">amazon</span>
+            <span class="home-s5-logo home-s5-logo--display">Wells Fargo</span>
+            <span class="home-s5-logo home-s5-logo--sans-medium">Bank of America</span>
+            <span class="home-s5-logo home-s5-logo--sans-bold">Uber</span>
+          </div>
+        </div>
+        </div>
       </div>
-     </section>
+    </section>
     <!-- Footer -->
-     <div id="footer"></div>
-  <script>
-  fetch('/footer.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('footer').innerHTML = html
-    })
-  </script>
-    <script src="js/index.js"></script>
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <div class="site-footer__main">
+          <div class="site-footer__brand">
+            <a href="index.html" class="site-footer__logo-link" aria-label="Microfinance at Berkeley home">
+              <img src="images/favicon.jpg" alt="Microfinance at Berkeley" class="site-footer__logo" width="44" height="44">
+            </a>
+            <div class="site-footer__brand-text">
+              <p class="site-footer__name">Microfinance at Berkeley</p>
+              <p class="site-footer__tagline">UC Berkeley's first small business consulting organization</p>
+            </div>
+          </div>
+          <div class="site-footer__social" aria-label="Social media and contact">
+            <a href="mailto:berkeleymicrofinance@gmail.com" class="site-footer__social-link" aria-label="Email Microfinance at Berkeley">
+              <img src="images/home/mail-logo.png" alt="" width="20" height="20">
+            </a>
+            <a href="https://www.facebook.com/microfinanceatberkeley/" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <img src="images/home/facebook-logo.png" alt="" width="20" height="20">
+            </a>
+            <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <img src="images/home/instagram-logo.png" alt="" width="20" height="20">
+            </a>
+            <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <img src="images/home/linkedin-logo.png" alt="" width="20" height="20">
+            </a>
+          </div>
+        </div>
+
+        <div class="site-footer__legal">
+          <p class="site-footer__legal-text">
+            Microfinance at Berkeley is sponsored by the Associated Students of the University of California and the National Undergraduate Impact Investing Society.
+            We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.
+          </p>
+          <p class="site-footer__copyright">&copy; 2026 Microfinance at Berkeley</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/navbar.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

@@ -5,148 +5,202 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join - Microfinance at Berkeley</title>
   <link rel="icon" href="images/favicon.jpg" type="image/png">
-  <link rel="stylesheet" href="css/styles.css"> <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body class="join-page">
-    <!-- Navbar -->
-    <!-- Section 1 (Title)-->
-     <div class="title-section">
-     <div id="navbar"></div>
-     <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('navbar').innerHTML = html
-        })
-     </script>
-      <div class="title">
-        <p>JOIN</p>
-        <div id="application-button-container">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdq2aYBIfwUShTcihs_gWbe_pEUdkwp-HGTjEQv6TimR2pQKQ/viewform?usp=preview" target="_blank">Application</a>
-        </div>
-      </div>
-      </div>
 
-    <!-- Section 2 (Information) changes made -->
-     <section class="join-s2">
-        <h1>SPRING 2026 RECRUITMENT IS OPEN <br> </h1>
-        <p id="join-contact-info">If questions arise, please email <span style="font-weight: bold;">danieldo@berkeley.edu</span> or <span style="font-weight: bold;">alizehali@berkeley.edu</span>.</p>
-        <p id="join-title-details"> Be sure to check out our <a href="https://docs.google.com/document/d/1g85mN8P55Xo-bv9XrbiUBCNVB5Nc-DN-8ds-_VSaQyk/edit?tab=t.0#heading=h.aczyuw2yex2w" id="recruitment-guide" target="_blank">Recruitment Guide</a> to view answers to several frequently asked questions. We aim to demystify our interview process and better prepare all applicants!</p>
-     </section>
-    <!-- Section 3 (Timeline) -->
-     <section class="join-s3">
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-1.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Tabling</h1>
-          <h2>1/20 - 1/30</h2>
-          <p>Come visit our table on Sproul Plaza and the Memorial Glade to learn more about what we do. Here's your chance to talk to some of our members and ask questions!</p>
-          <div class="join-button-container">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeS9iZmMgKS8Sorw1pIIUDtiEo5oFptAgTuhzZvppHyH-LoZQ/viewform?usp=preview" target="_blank">Interest Form</a>
+  <div class="page-hero">
+    <div id="navbar"></div>
+    <div class="title-section" aria-label="Join Microfinance at Berkeley">
+    <div class="title">
+      <h1>Join us</h1>
+      <a
+        class="join-cta join-cta--hero"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSdq2aYBIfwUShTcihs_gWbe_pEUdkwp-HGTjEQv6TimR2pQKQ/viewform?usp=preview"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Apply now</a>
+    </div>
+    </div>
+    </div>
+
+  <main class="join-main">
+    <section class="join-intro" aria-labelledby="join-intro-heading">
+      <div class="join__inner">
+        <h2 id="join-intro-heading" class="join-heading home-reveal">Fall 2026 recruitment</h2>
+        <p class="join-intro__text home-reveal home-reveal--delay-1">
+          If questions arise, please email
+          <a href="mailto:micahshin@berkeley.edu">micahshin@berkeley.edu</a>
+          or
+          <a href="mailto:alizehali@berkeley.edu">alizehali@berkeley.edu</a>.
+        </p>
+        <p class="join-intro__text home-reveal home-reveal--delay-2">
+          Be sure to check out our
+          <a
+            href="https://docs.google.com/document/d/1g85mN8P55Xo-bv9XrbiUBCNVB5Nc-DN-8ds-_VSaQyk/edit?tab=t.0#heading=h.aczyuw2yex2w"
+            class="join-inline-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Recruitment Guide</a>
+          to view answers to several frequently asked questions. We aim to demystify our interview process and better prepare all applicants!
+        </p>
+      </div>
+    </section>
+
+    <section class="join-events" aria-label="Recruitment events">
+      <div class="join__inner">
+        <article class="join-event home-reveal">
+          <div class="join-event__media">
+            <img src="images/join/join-image-1.JPG" alt="MFB tabling on Sproul Plaza" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Tabling</h3>
+            <p class="join-event__date">August 26 – August 31 · Sproul Plaza &amp; Memorial Glade</p>
+            <p class="join-event__text">Come visit our table on Sproul Plaza and the Memorial Glade to learn more about what we do. Here's your chance to talk to some of our members and ask questions!</p>
+            <a
+              class="join-cta join-cta--small"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeS9iZmMgKS8Sorw1pIIUDtiEo5oFptAgTuhzZvppHyH-LoZQ/viewform?usp=preview"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Interest form</a>
+          </div>
+        </article>
+
+        <article class="join-event join-event--reverse home-reveal home-reveal--delay-1">
+          <div class="join-event__media">
+            <img src="images/join/join-image-2.JPG" alt="MFB coffee chats" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Coffee chats</h3>
+            <p class="join-event__date">August 26 – September 2</p>
+            <p class="join-event__text">Coffee chat and learn more about our MFB family! Use the link below to set up a chat. <strong>Maximum 2 coffee chats per person.</strong></p>
+            <a
+              class="join-cta join-cta--small"
+              href="https://airtable.com/appvsDWapUAorGFQf/shr9Yl6WimfOb5SF2"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Coffee chats</a>
+          </div>
+        </article>
+
+        <article class="join-event home-reveal home-reveal--delay-2">
+          <div class="join-event__media">
+            <img src="images/join/join-image-3.JPG" alt="MFB info session" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Info session #1</h3>
+            <p class="join-event__date">September 1 · 6 – 7:30 PM · Eshleman BayView Room</p>
+            <p class="join-event__text">Join us at our first info session to learn everything you need to know about MFB. A networking session will be held after for you to talk with our members.</p>
+          </div>
+        </article>
+
+        <article class="join-event join-event--reverse home-reveal home-reveal--delay-3">
+          <div class="join-event__media">
+            <img src="images/join/join-image-4.JPG" alt="MFB second info session" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Info session #2</h3>
+            <p class="join-event__date">September 2 · 6 – 7:30 PM · Eshleman BayView Room</p>
+            <p class="join-event__text">No worries if you can't make our first info session — come to our second! The topics covered are the same, so no need to go to both.</p>
+          </div>
+        </article>
+
+        <article class="join-event home-reveal">
+          <div class="join-event__media">
+            <img src="images/join/join-image-5.jpg" alt="Microfinance 101 and case workshop" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Case workshop</h3>
+            <p class="join-event__date">September 3 · 6 – 8 PM · Eshleman BayView Room</p>
+            <p class="join-event__text">New to microfinance and casing? No problem! This event will give you all you need to succeed in our case interview. This is a non-evaluative portion of the recruitment process and is only in place for your benefit.</p>
+          </div>
+        </article>
+
+        <article class="join-event join-event--reverse home-reveal home-reveal--delay-1">
+          <div class="join-event__media">
+            <img src="images/join/join-image-6.JPG" alt="Application deadline reminder" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Application due</h3>
+            <p class="join-event__date">September 4 · 3 PM</p>
+            <p class="join-event__text">Make sure to turn your application in on time! We can't wait to learn about everyone.</p>
+            <a
+              class="join-cta join-cta--small"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSdq2aYBIfwUShTcihs_gWbe_pEUdkwp-HGTjEQv6TimR2pQKQ/viewform?usp=preview"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Apply now</a>
+          </div>
+        </article>
+
+        <article class="join-event home-reveal home-reveal--delay-2">
+          <div class="join-event__media">
+            <img src="images/join/join-image-7.jpg" alt="MFB interviews" loading="lazy">
+          </div>
+          <div class="join-event__body">
+            <h3 class="join-event__title">Interviews</h3>
+            <p class="join-event__date">Invite only · Time and location TBD</p>
+            <p class="join-event__text">Our interview process consists of a first-round group case, second-round behavioral, and lastly, a social night.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="join-cta-band" aria-label="Apply to Microfinance at Berkeley">
+      <div class="join__inner join-cta-band__inner home-reveal">
+        <p class="join-cta-band__lead">Ready to apply?</p>
+        <a
+          class="join-cta"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSdq2aYBIfwUShTcihs_gWbe_pEUdkwp-HGTjEQv6TimR2pQKQ/viewform?usp=preview"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Submit application</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div class="site-footer__main">
+        <div class="site-footer__brand">
+          <a href="index.html" class="site-footer__logo-link" aria-label="Microfinance at Berkeley home">
+            <img src="images/favicon.jpg" alt="Microfinance at Berkeley" class="site-footer__logo" width="44" height="44">
+          </a>
+          <div class="site-footer__brand-text">
+            <p class="site-footer__name">Microfinance at Berkeley</p>
+            <p class="site-footer__tagline">UC Berkeley's first small business consulting organization</p>
           </div>
         </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-2.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Coffee Chats</h1>
-          <h2>1/20 - 1/30</h2>
-          <p>Coffee chat and learn more about our MFB family! Use the Calendly links below to set up a chat. <br><br><b>*Maximum 2 Coffee Chats per Person*</b></p>
-          <div class="join-button-container">
-            <a href="https://airtable.com/appvsDWapUAorGFQf/shr9Yl6WimfOb5SF2" target="_blank">Coffee Chats</a>
-          </div>
+        <div class="site-footer__social" aria-label="Social media and contact">
+          <a href="mailto:berkeleymicrofinance@gmail.com" class="site-footer__social-link" aria-label="Email Microfinance at Berkeley">
+            <img src="images/home/mail-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.facebook.com/microfinanceatberkeley/" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="images/home/facebook-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.instagram.com/microfinanceatberkeley/?hl=en" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="images/home/instagram-logo.png" alt="" width="20" height="20">
+          </a>
+          <a href="https://www.linkedin.com/company/microfinance-at-berkeley/posts/?feedView=all" class="site-footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="images/home/linkedin-logo.png" alt="" width="20" height="20">
+          </a>
         </div>
       </div>
 
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-3.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Info Session #1</h1>
-          <h2>Tuesday 1/27 | 6 - 7:30 PM | Eshleman, 5th floor</h2>
-          <p>Join us at our first info session to learn everything you need to know about MFB. A networking session will be held after for you to talk with our members.</p>
-        </div>
+      <div class="site-footer__legal">
+        <p class="site-footer__legal-text">
+          Microfinance at Berkeley is sponsored by the Associated Students of the University of California and the National Undergraduate Impact Investing Society.
+          We are a student group acting independently of the University of California. We take full responsibility for our organization and this website.
+        </p>
+        <p class="site-footer__copyright">&copy; 2026 Microfinance at Berkeley</p>
       </div>
+    </div>
+  </footer>
 
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-4.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Info Session #2</h1>
-          <h2>Wednesday 1/28 | 6 - 7:30pm | YWCA <a href='https://maps.app.goo.gl/upL72yT3KqVPfhLv8'>(Location link)</a>
-</h2>
-          <p>No worries if you can't make our first info session, come to our second! The topics covered are the same, so no need to go to both.</p>
-        </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-5.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Microfinance 101 & Case Workshop</h1>
-          <h2>Thursday 1/29 | 6 - 8pm | Eshleman, 5th floor</h2>
-          <p>New to microfinance and casing? No problem! This event will give you all you need to succeed in our case interview. This is a non-evaluative portion of the recruitment process and is only in place for your benefit.</p>
-        </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-6.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Application Due</h1>
-          <h2>Friday 1/30 | 8pm</h2>
-          <p>Make sure to turn your application on time! We can't wait to learn about everyone.</p>
-        </div>
-      </div>
-
-      <div class="join-timeline-item-container">
-        <img src="images/join/join-image-7.JPG">
-        <div class="timeline-elements">
-          <div class="vertical-line"></div>
-          <div class="circle"></div>
-        </div>
-        <div class="join-information-container">
-          <h1>Interviews</h1>
-          <h2>INVITE ONLY | 1/31 - 2/1</h2>
-          <p>Our interview process consists of a first-round group case, second-round behavioral, and lastly, a social night.</p>
-        </div>
-      </div>
-
-     </section>
-
-    <!-- Footer -->
-      <div id="footer"></div>
-      <script>
-      fetch('/footer.html')
-        .then(res => res.text())
-        .then(html => {
-          document.getElementById('footer').innerHTML = html
-        })
-      </script>
-    <script src="js/index.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/index.js"></script>
 </body>
 </html>

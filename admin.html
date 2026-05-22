@@ -20,17 +20,14 @@
 <body class="about-page admin-page">
 
   <!-- Navbar -->
-  <div class="title-section">
+  <div class="page-hero">
     <div id="navbar"></div>
-    <script>
-      fetch('/navbar.html')
-        .then(res => res.text())
-        .then(html => { document.getElementById('navbar').innerHTML = html })
-    </script>
+    <div class="title-section">
     <div class="title">
       <p>ROSTER</p>
     </div>
-  </div>
+    </div>
+    </div>
 
   <main>
     <div class="admin-toolbar">
@@ -62,6 +59,7 @@
             <label for="f-group">Group *</label>
             <select id="f-group" required>
               <option value="exec">Executive Board</option>
+              <option value="pm">Project Managers</option>
               <option value="board">Board</option>
               <option value="member">Member</option>
             </select>
@@ -132,6 +130,7 @@
     })
   </script>
 
+  <script src="js/navbar.js"></script>
   <script src="js/index.js"></script>
 
 
@@ -179,6 +178,7 @@
     const rosterContainer = document.getElementById("roster-container");
     const GROUPS = [
       { key: "exec",   label: "Executive Board" },
+      { key: "pm",     label: "Project Managers" },
       { key: "board",  label: "Board" },
       { key: "member", label: "Members" },
     ];
@@ -220,11 +220,22 @@
       renderRoster(currentRoster);
     }
 
+    function isProjectManagerTitle(title) {
+      return /\bproject\s*manager\b/i.test(title || "");
+    }
+
+    function rosterGroupKey(m) {
+      if (m.group === "exec") return "exec";
+      if (m.group === "pm" || isProjectManagerTitle(m.title)) return "pm";
+      if (m.group === "board") return "board";
+      return "member";
+    }
+
     function renderRoster(members) {
-      const byGroup = { exec: [], board: [], member: [] };
+      const byGroup = { exec: [], pm: [], board: [], member: [] };
       members.forEach(m => {
-        if (byGroup[m.group]) byGroup[m.group].push(m);
-        else byGroup.member.push(m);
+        const key = rosterGroupKey(m);
+        byGroup[key].push(m);
       });
 
       // Sort each group by sort_order (nulls last), then name
@@ -239,7 +250,7 @@
 
       const html = GROUPS.map(g => {
         const list = byGroup[g.key];
-        const canSortGroup = isAdmin && (g.key === "exec" || g.key === "board");
+        const canSortGroup = isAdmin && (g.key === "exec" || g.key === "pm" || g.key === "board");
         const rows = list.length
           ? list.map((m, i) => rowHtml(m, i, list.length, canSortGroup)).join("")
           : `<tr><td colspan="6" class="empty" style="background:white;">No one in this group yet.</td></tr>`;
@@ -337,11 +348,12 @@
       if (!isAdmin) return; // belt + suspenders
       const me = currentRoster.find(m => m.id === id);
       if (!me) return;
-      if (me.group !== "exec" && me.group !== "board") return;
+      const myGroup = rosterGroupKey(me);
+      if (myGroup !== "exec" && myGroup !== "pm" && myGroup !== "board") return;
 
       // Build the sibling list in the same order the table renders them
       const siblings = currentRoster
-        .filter(m => m.group === me.group)
+        .filter(m => rosterGroupKey(m) === myGroup)
         .sort((a, b) => {
           const ao = a.sort_order ?? Infinity;
           const bo = b.sort_order ?? Infinity;
@@ -629,6 +641,9 @@ document.getElementById("f-photo").addEventListener("change", e => {
 
     if (isAdmin) {
       payload.group = document.getElementById("f-group").value;
+      if (isProjectManagerTitle(payload.title)) {
+        payload.group = "pm";
+      }
       payload.email = document.getElementById("f-email").value.trim() || null;
     }
 
