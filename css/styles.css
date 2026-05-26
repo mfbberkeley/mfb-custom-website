@@ -881,7 +881,9 @@ body.nav-open .mobile-nav-panel {
 .about-page .home-reveal,
 .services-page .home-reveal,
 .team-page .home-reveal,
-.join-page .home-reveal {
+.join-page .home-reveal,
+.intern-page .home-reveal,
+.login-page .home-reveal {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -892,7 +894,9 @@ body.nav-open .mobile-nav-panel {
 .about-page .home-reveal.is-visible,
 .services-page .home-reveal.is-visible,
 .team-page .home-reveal.is-visible,
-.join-page .home-reveal.is-visible {
+.join-page .home-reveal.is-visible,
+.intern-page .home-reveal.is-visible,
+.login-page .home-reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -901,7 +905,9 @@ body.nav-open .mobile-nav-panel {
 .about-page .home-reveal--delay-1.is-visible,
 .services-page .home-reveal--delay-1.is-visible,
 .team-page .home-reveal--delay-1.is-visible,
-.join-page .home-reveal--delay-1.is-visible {
+.join-page .home-reveal--delay-1.is-visible,
+.intern-page .home-reveal--delay-1.is-visible,
+.login-page .home-reveal--delay-1.is-visible {
     transition-delay: 0.1s;
 }
 
@@ -909,7 +915,9 @@ body.nav-open .mobile-nav-panel {
 .about-page .home-reveal--delay-2.is-visible,
 .services-page .home-reveal--delay-2.is-visible,
 .team-page .home-reveal--delay-2.is-visible,
-.join-page .home-reveal--delay-2.is-visible {
+.join-page .home-reveal--delay-2.is-visible,
+.intern-page .home-reveal--delay-2.is-visible,
+.login-page .home-reveal--delay-2.is-visible {
     transition-delay: 0.2s;
 }
 
@@ -917,7 +925,9 @@ body.nav-open .mobile-nav-panel {
 .about-page .home-reveal--delay-3.is-visible,
 .services-page .home-reveal--delay-3.is-visible,
 .team-page .home-reveal--delay-3.is-visible,
-.join-page .home-reveal--delay-3.is-visible {
+.join-page .home-reveal--delay-3.is-visible,
+.intern-page .home-reveal--delay-3.is-visible,
+.login-page .home-reveal--delay-3.is-visible {
     transition-delay: 0.3s;
 }
 
@@ -1160,7 +1170,9 @@ body.nav-open .mobile-nav-panel {
     .about-page .home-reveal,
     .services-page .home-reveal,
     .team-page .home-reveal,
-    .join-page .home-reveal {
+    .join-page .home-reveal,
+    .intern-page .home-reveal,
+    .login-page .home-reveal {
         opacity: 1;
         transform: none;
         transition: none;
