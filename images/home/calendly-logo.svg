@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Calendly">
+  <rect x="1.5" y="3.5" width="21" height="19" rx="3"/>
+  <line x1="1.5" y1="9" x2="22.5" y2="9"/>
+  <line x1="7" y1="1.5" x2="7" y2="5.5"/>
+  <line x1="17" y1="1.5" x2="17" y2="5.5"/>
+</svg>

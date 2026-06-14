@@ -2780,6 +2780,21 @@ body.nav-open .mobile-nav-panel {
     border-top: 1px solid rgba(26, 58, 42, 0.08);
 }
 
+.team-page .team-section--chair {
+    background-color: #fff;
+    border-top: 1px solid rgba(26, 58, 42, 0.08);
+}
+
+.team-page .team-section--advisor {
+    background-color: #fafafa;
+    border-top: 1px solid rgba(26, 58, 42, 0.08);
+}
+
+.team-page .team-section--member {
+    background-color: #fff;
+    border-top: 1px solid rgba(26, 58, 42, 0.08);
+}
+
 .team-page .team-empty {
     font-family: 'Roboto', sans-serif;
     font-size: 0.95rem;
@@ -2857,6 +2872,8 @@ body.nav-open .mobile-nav-panel {
     overflow: hidden;
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.09);
     background-color: #e8e8e8;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .team-page .team-leader-photo:focus-visible {
@@ -2865,7 +2882,10 @@ body.nav-open .mobile-nav-panel {
 }
 
 .team-page .team-leader-photo .team-portrait-img {
-    transition: opacity 0.45s ease;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .team-page .team-leader-photo__overlay {
@@ -2879,7 +2899,10 @@ body.nav-open .mobile-nav-panel {
     box-sizing: border-box;
     background-color: rgba(26, 58, 42, 0.88);
     opacity: 0;
-    transition: opacity 0.45s ease;
+    transition: opacity 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
+    transform: translateZ(0);
+    backface-visibility: hidden;
     pointer-events: none;
 }
 

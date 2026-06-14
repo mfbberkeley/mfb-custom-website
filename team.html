@@ -46,13 +46,33 @@
       </div>
     </section>
 
-    <section class="team-section team-section--board" aria-labelledby="team-board-heading">
+    <section class="team-section team-section--chair" aria-labelledby="team-chair-heading">
       <div class="team__inner">
         <div class="home-reveal team-section__header">
-          <h2 id="team-board-heading" class="team-heading">Board</h2>
+          <h2 id="team-chair-heading" class="team-heading">Committee Chairs</h2>
         </div>
-        <div class="team-grid team-grid--leadership" id="board-grid"></div>
-        <p class="team-empty" id="board-empty" hidden>No board members to display.</p>
+        <div class="team-grid team-grid--leadership" id="chair-grid"></div>
+        <p class="team-empty" id="chair-empty" hidden>No committee chairs to display.</p>
+      </div>
+    </section>
+
+    <section class="team-section team-section--advisor" aria-labelledby="team-advisor-heading">
+      <div class="team__inner">
+        <div class="home-reveal team-section__header">
+          <h2 id="team-advisor-heading" class="team-heading">Senior Advisors</h2>
+        </div>
+        <div class="team-grid team-grid--leadership" id="advisor-grid"></div>
+        <p class="team-empty" id="advisor-empty" hidden>No senior advisors to display.</p>
+      </div>
+    </section>
+
+    <section class="team-section team-section--member" aria-labelledby="team-member-heading">
+      <div class="team__inner">
+        <div class="home-reveal team-section__header">
+          <h2 id="team-member-heading" class="team-heading">Members</h2>
+        </div>
+        <div class="team-grid team-grid--leadership" id="member-grid"></div>
+        <p class="team-empty" id="member-empty" hidden>No members to display.</p>
       </div>
     </section>
   </main>
@@ -114,7 +134,6 @@
 
   <script src="js/navbar.js"></script>
   <script src="js/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/team.js"></script>
 </body>
 </html>

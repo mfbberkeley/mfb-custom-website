@@ -1,25 +1,335 @@
 const TEAM_IMAGE_BASE = 'images/team/';
 const MAIL_ICON = 'images/home/mail-logo.png';
 const LINKEDIN_ICON = 'images/home/linkedin-logo.png';
+const CALENDLY_ICON = 'images/home/calendly-logo.svg';
 
-const SUPABASE_URL = 'https://ltkyxgsgkwqowxikatub.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_JRIwBltGZdjZZod9qnNPzw_p3RiR4B3';
+/*
+ * Roster data — edit this list manually to update the team page.
+ * Fields: name, title, year, major, hobbies, linkedin, calendly, email (optional), image (optional override).
+ * Photos load automatically from images/team/<name-slug>.webp; new members without a
+ * photo show a blank placeholder until one is added. Use `image` to point at a
+ * specific file when the slug does not match.
+ */
+const TEAM_MEMBERS = {
+    exec: [
+        {
+            name: 'Alizeh Ali',
+            title: 'President',
+            year: 'Junior',
+            major: 'Business Admin',
+            hobbies: 'Dance Moms, Coffee, Crime Shows, Fantasy/Dystopian Books, Musicals',
+            linkedin: 'www.linkedin.com/in/alizeha',
+            calendly: 'https://calendly.com/alizehali-berkeley/30min',
+        },
+        {
+            name: 'Micah Shin',
+            title: 'President',
+            year: 'Junior',
+            major: 'Business Administration (GMP)',
+            hobbies: 'Lacrosse, Flute, Piccolo, Egyptology, Squash',
+            linkedin: 'https://www.linkedin.com/in/micahshin',
+            calendly: 'https://calendly.com/micahshin-berkeley/30min',
+        },
+        {
+            name: 'Nathan Nyaung',
+            title: 'Internal VP',
+            year: 'Junior',
+            major: 'Economics & Data Science',
+            hobbies: 'Photography, Cooking, Hiking, Poker, Sports Betting, Running',
+            linkedin: 'https://www.linkedin.com/in/nathan-nyaung-91161327b/',
+            calendly: 'https://calendly.com/nathannyaung-berkeley/30min',
+        },
+        {
+            name: 'Elliot Jang',
+            title: 'VP Marketing',
+            year: 'Junior',
+            major: 'Business Admin, Econ',
+            hobbies: 'Basketball, UFC, Taekwondo, Piano, Clash Royale',
+            linkedin: 'www.linkedin.com/in/elliotjang',
+            calendly: 'https://calendly.com/elliotjang-berkeley/30min',
+        },
+        {
+            name: 'Nidhish Tekkam',
+            title: 'VP Finance & Operations',
+            year: 'Sophomore',
+            major: 'Business Administration & Data Science',
+            hobbies: 'Backpacking, Hosting, Non-Fiction Reading, Late-Night Workouts, Billiards, Options Trading, Sports Betting',
+            linkedin: 'www.linkedin.com/in/nidhish-tekkam',
+            calendly: 'https://calendly.com/nidhish-tekkam-berkeley/mfb-coffee-chat',
+        },
+    ],
+    pm: [
+        {
+            name: 'Kellen Chang',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Econ',
+            hobbies: 'Brawl Stars, Anime, Basketball, Singles Inferno, Poker',
+            linkedin: 'www.linkedin.com/in/kellen-chang',
+            calendly: 'https://calendly.com/kellen76-berkeley',
+        },
+        {
+            name: 'Nicole Wang',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Data Science, Economics',
+            hobbies: 'Video Editing, Dancing, Hiking, Matcha/Coffee/Boba, Crochet, Painting, Photography, Nails',
+            linkedin: 'https://www.linkedin.com/in/nicoleswang/',
+            calendly: 'https://calendly.com/nicoleswang-berkeley/30min',
+        },
+        {
+            name: 'Susie Gu',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Business Administration, Data Science',
+            hobbies: 'Reading, Writing, Kpop, Dance, Cooking Shows, Baking, Accounting, Finance',
+            linkedin: 'https://www.linkedin.com/in/susiegu/',
+            calendly: 'calendly.com/susie_gu-berkeley',
+        },
+        {
+            name: 'Palak Prabhakar',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Business, Cog Sci',
+            hobbies: 'Dance, Gym, Dystopian Media, Photography, Beaded Crafts',
+            linkedin: 'linkedin.com/in/palakprabhakar',
+            calendly: 'calendly.com/palakprabhakar',
+        },
+        {
+            name: 'Mihiro Okubo',
+            title: 'Project Manager',
+            year: 'Junior',
+            major: 'Environmental Economics & Policy, Minor in Data Science',
+            hobbies: 'Baking, Side Hustles, Guitar, Ceramics, Lacrosse',
+            linkedin: 'www.linkedin.com/in/mihiro-okubo',
+            calendly: 'https://calendly.com/mihiro_okubo-berkeley/30min',
+        },
+        {
+            name: 'Arthur Renard',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Applied Mathematics & Data Science',
+            hobbies: 'Guitar, Food, Math',
+            linkedin: 'https://www.linkedin.com/in/arthur-m-renard/',
+            calendly: 'https://calendly.com/arthur-r-berkeley/30min',
+        },
+        {
+            name: 'Harpreet Kaur',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Aerospace Engineering',
+            hobbies: 'Swimming, Running, Baking, Traveling, Photography, F1, Cosmology',
+            linkedin: 'www.linkedin.com/in/harpreetkauraero',
+            calendly: 'https://calendly.com/harpreetkc-berkeley/mfb-coffe-chat',
+        },
+        {
+            name: 'Yingyi Zhen',
+            title: 'Project Manager',
+            year: 'Incoming Sophomore',
+            major: 'Intended Economics & Data Science',
+            hobbies: 'Golf, K-Dramas, C-Dramas',
+            linkedin: 'https://www.linkedin.com/in/yingyi-zhen/',
+            calendly: 'https://calendly.com/yingyizhen03-berkeley/new-meeting',
+        },
+    ],
+    chair: [
+        {
+            name: 'Alex Black',
+            title: 'Microfinance Committee Chair',
+            year: 'Sophomore',
+            major: 'Economics',
+            hobbies: 'Running, Pokémon Cards, Traveling, Eating, Watching Shows',
+            linkedin: 'www.linkedin.com/in/alexblack29/',
+            calendly: 'calendly.com/alexander_black-berkeley',
+        },
+        {
+            name: 'Nicole Wang',
+            title: 'Marketing Chair',
+            year: 'Sophomore',
+            major: 'Data Science, Economics',
+            hobbies: 'Video Editing, Dancing, Hiking, Matcha/Coffee/Boba, Crochet, Painting, Photography, Nails',
+            linkedin: 'https://www.linkedin.com/in/nicoleswang/',
+            calendly: 'https://calendly.com/nicoleswang-berkeley/30min',
+        },
+        {
+            name: 'Susie Gu',
+            title: 'Finance Chair',
+            year: 'Sophomore',
+            major: 'Business Administration, Data Science',
+            hobbies: 'Reading, Writing, Kpop, Dance, Cooking Shows, Baking, Accounting, Finance',
+            linkedin: 'https://www.linkedin.com/in/susiegu/',
+            calendly: 'calendly.com/susie_gu-berkeley',
+        },
+        {
+            name: 'Arthur Renard',
+            title: 'Finance Chair',
+            year: 'Sophomore',
+            major: 'Applied Mathematics & Data Science',
+            hobbies: 'Guitar, Food, Math',
+            linkedin: 'https://www.linkedin.com/in/arthur-m-renard/',
+            calendly: 'https://calendly.com/arthur-r-berkeley/30min',
+        },
+    ],
+    advisor: [
+        {
+            name: 'Christian Reyes',
+            title: 'Senior Advisor',
+            year: 'Senior',
+            major: 'Civil Engineering',
+            hobbies: 'Gym, Football, Eating',
+            linkedin: '',
+            calendly: '',
+        },
+        {
+            name: 'Jolene Seng',
+            title: 'Senior Advisor',
+            year: 'Senior',
+            major: 'Statistics & Economics',
+            hobbies: 'Volleyball, Swimming, Hiking, Cooking, Cafe Hopping',
+            linkedin: '',
+            calendly: '',
+        },
+        {
+            name: 'Alex Kwan',
+            title: 'Senior Advisor',
+            year: 'Senior',
+            major: 'Econ',
+            hobbies: 'Basketball, Camping, Eating, Trying New Things',
+            linkedin: '',
+            calendly: '',
+            image: 'images/team/alexander-kwan.webp',
+        },
+        {
+            name: 'Matthew Chan',
+            title: 'Senior Advisor',
+            year: 'Junior',
+            major: 'Business Administration, Cognitive Science',
+            hobbies: 'Guitar, Movies/TV, Cars, Skiing',
+            linkedin: '',
+            calendly: '',
+        },
+        {
+            name: 'Lauren Davis',
+            title: 'Senior Advisor',
+            year: 'Junior',
+            major: 'Economics',
+            hobbies: 'Traveling, Yoga, Trying New Coffee Shops',
+            linkedin: '',
+            calendly: '',
+        },
+        {
+            name: 'Maeve Klement',
+            title: 'Senior Advisor',
+            year: 'Junior',
+            major: 'Economics',
+            hobbies: 'Running, Hiking, Tennis, Cooking/Baking, Podcasts',
+            linkedin: '',
+            calendly: '',
+        },
+        {
+            name: 'Nithya Prabhu',
+            title: 'Senior Advisor',
+            year: 'Senior',
+            major: 'Cognitive Science & Data Science',
+            hobbies: 'F1, Figure Skating, Art',
+            linkedin: '',
+            calendly: '',
+            image: 'images/team/nithyashree-prabhu.webp',
+        },
+    ],
+    member: [
+        {
+            name: 'Hean Ng',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Econ & Data Science',
+            hobbies: 'Skateboarding, Skiing, Scuba Diving, Travel',
+            linkedin: 'www.linkedin.com/in/hean-ng',
+            calendly: '',
+        },
+        {
+            name: 'Rayhan Jain',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Applied Math & Data Science',
+            hobbies: 'Basketball, Traveling, Trying New Food Spots',
+            linkedin: 'https://www.linkedin.com/in/rayhan-j/',
+            calendly: '',
+        },
+        {
+            name: 'Orin Dhruvan',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Political Economy',
+            hobbies: 'Music, Anime, Parties',
+            linkedin: 'linkedin.com/in/otron',
+            calendly: '',
+        },
+        {
+            name: 'Yoshan Murugesh',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Economics, Data Science',
+            hobbies: 'Basketball, Backpacking, Travel, Gym, Poker',
+            linkedin: 'https://www.linkedin.com/in/yoshanmurugesh',
+            calendly: 'https://calendly.com/yoshanmurugesh-berkeley/30min',
+        },
+        {
+            name: 'Katherine Rivas',
+            title: 'Senior Associate',
+            year: 'Second Year',
+            major: 'Business Administration',
+            hobbies: 'Drawing, Gym, Hiking, Trying New Food Spots',
+            linkedin: 'https://www.linkedin.com/in/katherinecrivas',
+            calendly: 'calendly.com/katherine_rivas-berkeley',
+        },
+        {
+            name: 'Akhila Lankalapalli',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Business Admin & Data Science',
+            hobbies: 'Badminton, Gym, Hanging With Friends, Exploring The City',
+            linkedin: 'https://www.linkedin.com/in/akhila-l-08298226b/',
+            calendly: 'https://calendly.com/slankalapalli-berkeley',
+        },
+        {
+            name: 'Athena Sia',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Economics, Data Science',
+            hobbies: 'Climbing',
+            linkedin: 'https://www.linkedin.com/in/yitingsia06/',
+            calendly: 'https://calendly.com/athena06-berkeley/30min',
+        },
+        {
+            name: 'Rubin Jain',
+            title: 'Senior Associate',
+            year: 'Incoming Junior',
+            major: 'Business Administration & Integrative Biology',
+            hobbies: 'Basketball, Golf, DJing, Concerts, Camping/Hiking',
+            linkedin: 'www.linkedin.com/in/rubinjain',
+            calendly: 'calendly.com/rubinjain-berkeley',
+        },
+        {
+            name: 'Andy Cai',
+            title: 'Senior Associate',
+            year: 'Sophomore',
+            major: 'Genetics & Plant Biology',
+            hobbies: 'Basketball, Gym, Cycling, Exploring, Video Games',
+            linkedin: 'https://www.linkedin.com/in/andycai2007',
+            calendly: 'https://calendly.com/cal_andycai2007-berkeley',
+        },
+    ],
+};
 
 const teamStatusEl = document.getElementById('team-status');
-const execGrid = document.getElementById('exec-grid');
-const pmGrid = document.getElementById('pm-grid');
-const boardGrid = document.getElementById('board-grid');
-const execEmptyEl = document.getElementById('exec-empty');
-const pmEmptyEl = document.getElementById('pm-empty');
-const boardEmptyEl = document.getElementById('board-empty');
-
-function getSupabaseClient() {
-    const lib = window.supabase;
-    if (!lib || typeof lib.createClient !== 'function') {
-        throw new Error('Supabase library did not load');
-    }
-    return lib.createClient(SUPABASE_URL, SUPABASE_KEY);
-}
+const GROUP_CONFIG = [
+    { key: 'exec', grid: 'exec-grid', empty: 'exec-empty' },
+    { key: 'pm', grid: 'pm-grid', empty: 'pm-empty' },
+    { key: 'chair', grid: 'chair-grid', empty: 'chair-empty' },
+    { key: 'advisor', grid: 'advisor-grid', empty: 'advisor-empty' },
+    { key: 'member', grid: 'member-grid', empty: 'member-empty' },
+];
 
 function slugFromName(name) {
     return String(name || '')
@@ -34,14 +344,15 @@ function localPortraitPath(member) {
 }
 
 function resolvePortraitSrc(member) {
-    const url = (member.image_url || '').trim();
-    const local = localPortraitPath(member);
+    const url = (member.image || '').trim();
+    return url || localPortraitPath(member);
+}
 
-    if (!url) return local;
-    if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('/')) {
-        return url;
-    }
-    return url;
+function normalizeUrl(value) {
+    const raw = (value || '').trim();
+    if (!raw || /^n\/?a$/i.test(raw)) return '';
+    if (/^https?:\/\//i.test(raw) || raw.startsWith('/')) return raw;
+    return `https://${raw}`;
 }
 
 function setTeamStatus(message, isError) {
@@ -54,13 +365,6 @@ function setTeamStatus(message, isError) {
 function setSectionEmpty(emptyEl, isEmpty) {
     if (!emptyEl) return;
     emptyEl.hidden = !isEmpty;
-}
-
-function isProjectManager(member) {
-    return (
-        member.group === 'pm' ||
-        /\bproject\s*manager\b/i.test(member.title || '')
-    );
 }
 
 function observeTeamReveals() {
@@ -184,17 +488,23 @@ function createLeadershipCard(member) {
         `Email ${member.name}`
     );
     const linkedinLink = createSocialLink(
-        member.linkedin,
+        normalizeUrl(member.linkedin),
         LINKEDIN_ICON,
         `${member.name} on LinkedIn`
+    );
+    const calendlyLink = createSocialLink(
+        normalizeUrl(member.calendly),
+        CALENDLY_ICON,
+        `Schedule a chat with ${member.name} on Calendly`
     );
 
     if (emailLink) socials.appendChild(emailLink);
     if (linkedinLink) socials.appendChild(linkedinLink);
+    if (calendlyLink) socials.appendChild(calendlyLink);
 
     overlay.appendChild(yearMajor);
     overlay.appendChild(hobbies);
-    overlay.appendChild(socials);
+    if (socials.childElementCount) overlay.appendChild(socials);
 
     photo.appendChild(createPortraitImg(member));
     photo.appendChild(overlay);
@@ -214,7 +524,7 @@ function createLeadershipCard(member) {
     return card;
 }
 
-function renderGroup(members, grid, emptyEl, createCard) {
+function renderGroup(members, grid, emptyEl) {
     if (!grid) return;
 
     grid.replaceChildren();
@@ -226,59 +536,21 @@ function renderGroup(members, grid, emptyEl, createCard) {
 
     setSectionEmpty(emptyEl, false);
     members.forEach((member) => {
-        grid.appendChild(createCard(member));
+        grid.appendChild(createLeadershipCard(member));
     });
 }
 
-async function loadTeam() {
-    setTeamStatus('Loading team…', false);
+function loadTeam() {
+    setTeamStatus('', false);
 
-    try {
-        if (!execGrid || !pmGrid || !boardGrid) {
-            throw new Error('Team page grids not found');
-        }
+    GROUP_CONFIG.forEach(({ key, grid, empty }) => {
+        const gridEl = document.getElementById(grid);
+        const emptyEl = document.getElementById(empty);
+        renderGroup(TEAM_MEMBERS[key] || [], gridEl, emptyEl);
+        initLeadershipPhotos(gridEl);
+    });
 
-        const teamClient = getSupabaseClient();
-
-        const { data, error } = await teamClient
-            .from('members')
-            .select('*')
-            .order('sort_order', { ascending: true })
-            .order('name', { ascending: true });
-
-        if (error) {
-            throw error;
-        }
-
-        const rows = data || [];
-        const execMembers = [];
-        const pmMembers = [];
-        const boardMembers = [];
-
-        rows.forEach((member) => {
-            if (member.group === 'exec') {
-                execMembers.push(member);
-            } else if (isProjectManager(member)) {
-                pmMembers.push(member);
-            } else if (member.group === 'board') {
-                boardMembers.push(member);
-            }
-        });
-
-        renderGroup(execMembers, execGrid, execEmptyEl, createLeadershipCard);
-        renderGroup(pmMembers, pmGrid, pmEmptyEl, createLeadershipCard);
-        renderGroup(boardMembers, boardGrid, boardEmptyEl, createLeadershipCard);
-
-        initLeadershipPhotos(execGrid);
-        initLeadershipPhotos(pmGrid);
-        initLeadershipPhotos(boardGrid);
-        observeTeamReveals();
-
-        setTeamStatus('', false);
-    } catch (err) {
-        console.error('Team load failed:', err);
-        setTeamStatus('Unable to load team roster. Please try again later.', true);
-    }
+    observeTeamReveals();
 }
 
 if (document.readyState === 'loading') {
