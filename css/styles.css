@@ -2407,6 +2407,7 @@ body.nav-open .mobile-nav-panel {
 .services-page .services-offer__image {
     width: 100%;
     height: auto;
+    aspect-ratio: 609 / 406;
     display: block;
     border-radius: 12px;
     object-fit: cover;

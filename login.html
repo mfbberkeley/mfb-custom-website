@@ -166,6 +166,15 @@
       window.location.href = "/admin.html";
     }
 
+    async function loginWithGoogle() {
+      setStatus("Redirecting to Google…");
+      const { error } = await supabaseClient.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: `${window.location.origin}/admin.html` },
+      });
+      if (error) setStatus(error.message, "error");
+    }
+
     async function sendLink() {
       const email = document.getElementById("email").value.trim();
       if (!email) {
@@ -173,7 +182,10 @@
         return;
       }
       setStatus("Sending link…");
-      const { error } = await supabaseClient.auth.signInWithOtp({ email });
+      const { error } = await supabaseClient.auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/admin.html` },
+      });
       if (error) {
         setStatus(error.message, "error");
         return;

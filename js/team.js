@@ -57,6 +57,15 @@ const TEAM_MEMBERS = {
             linkedin: 'www.linkedin.com/in/nidhish-tekkam',
             calendly: 'https://calendly.com/nidhish-tekkam-berkeley/mfb-coffee-chat',
         },
+        {
+            name: 'Willie Kang',
+            title: 'VP Microfinance',
+            year: 'Senior',
+            major: 'Public Policy',
+            hobbies: 'Basketball, MMA, Gym, Food',
+            linkedin: 'https://www.linkedin.com/in/williekang/',
+            calendly: '',
+        },
     ],
     pm: [
         {
@@ -125,7 +134,7 @@ const TEAM_MEMBERS = {
         {
             name: 'Yingyi Zhen',
             title: 'Project Manager',
-            year: 'Incoming Sophomore',
+            year: 'Sophomore',
             major: 'Intended Economics & Data Science',
             hobbies: 'Golf, K-Dramas, C-Dramas',
             linkedin: 'https://www.linkedin.com/in/yingyi-zhen/',
@@ -277,7 +286,7 @@ const TEAM_MEMBERS = {
         {
             name: 'Katherine Rivas',
             title: 'Senior Associate',
-            year: 'Second Year',
+            year: 'Sophomore',
             major: 'Business Administration',
             hobbies: 'Drawing, Gym, Hiking, Trying New Food Spots',
             linkedin: 'https://www.linkedin.com/in/katherinecrivas',
@@ -304,7 +313,7 @@ const TEAM_MEMBERS = {
         {
             name: 'Rubin Jain',
             title: 'Senior Associate',
-            year: 'Incoming Junior',
+            year: 'Junior',
             major: 'Business Administration & Integrative Biology',
             hobbies: 'Basketball, Golf, DJing, Concerts, Camping/Hiking',
             linkedin: 'www.linkedin.com/in/rubinjain',
