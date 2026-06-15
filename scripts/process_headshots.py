@@ -80,7 +80,7 @@ CROP_OVERRIDES: dict[str, dict[str, float]] = {
         "face_y_ratio": 0.34,
     },
     "rayhan-jain": {"face_ratio": 0.30, "offset_x": 0.03},
-    "nidhish-tekkam": {"face_ratio": 0.27, "offset_x": 0.03},
+    "nidhish-tekkam": {"face_ratio": 0.27},
     "willie-kang": {"manual_center": (0.50, 0.36), "crop_height_frac": 0.48, "face_y_ratio": 0.34},
     "alex-black": {"manual_center": (0.50, 0.42), "crop_height_frac": 0.76, "face_y_ratio": 0.38},
 }
