@@ -32,7 +32,7 @@ const TEAM_MEMBERS = {
         },
         {
             name: 'Nathan Nyaung',
-            title: 'Internal VP',
+            title: 'VP Internal',
             year: 'Junior',
             major: 'Economics & Data Science',
             hobbies: 'Photography, Cooking, Hiking, Poker, Sports Betting, Running',
@@ -61,10 +61,10 @@ const TEAM_MEMBERS = {
             name: 'Willie Kang',
             title: 'VP Microfinance',
             year: 'Senior',
-            major: 'Public Policy',
-            hobbies: 'Basketball, MMA, Gym, Food',
-            linkedin: 'https://www.linkedin.com/in/williekang/',
-            calendly: '',
+            major: 'Analytics',
+            hobbies: 'Dance, Reading, Poker, NBA, Skiing',
+            linkedin: 'https://www.linkedin.com/in/williekang',
+            calendly: 'https://calendly.com/williek-berkeley/30min',
         },
     ],
     pm: [
@@ -144,7 +144,7 @@ const TEAM_MEMBERS = {
     chair: [
         {
             name: 'Alex Black',
-            title: 'Microfinance Committee Chair',
+            title: 'Microfinance Chair',
             year: 'Sophomore',
             major: 'Economics',
             hobbies: 'Running, Pokémon Cards, Traveling, Eating, Watching Shows',
