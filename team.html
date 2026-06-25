@@ -134,6 +134,13 @@
 
   <script src="js/navbar.js"></script>
   <script src="js/index.js"></script>
-  <script src="js/team.js"></script>
+  <script>
+    (function () {
+      const bust = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? `?v=${Date.now()}` : '';
+      const script = document.createElement('script');
+      script.src = `js/team.js${bust}`;
+      document.body.appendChild(script);
+    })();
+  </script>
 </body>
 </html>

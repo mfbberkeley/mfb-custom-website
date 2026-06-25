@@ -2,6 +2,13 @@ const TEAM_IMAGE_BASE = 'images/team/';
 const MAIL_ICON = 'images/home/mail-logo.png';
 const LINKEDIN_ICON = 'images/home/linkedin-logo.png';
 const CALENDLY_ICON = 'images/home/calendly-logo.svg';
+const IS_LOCAL_PREVIEW = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+const TEAM_PREVIEW_CACHE_BUST = IS_LOCAL_PREVIEW ? `?v=${Date.now()}` : '';
+
+function withPreviewCacheBust(url) {
+    if (!TEAM_PREVIEW_CACHE_BUST || !url || url.includes('?')) return url;
+    return `${url}${TEAM_PREVIEW_CACHE_BUST}`;
+}
 
 /*
  * Roster data — edit this list manually to update the team page.
@@ -43,7 +50,7 @@ const TEAM_MEMBERS = {
             name: 'Elliot Jang',
             title: 'VP Marketing',
             year: 'Junior',
-            major: 'Business Admin, Econ',
+            major: 'Economics',
             hobbies: 'Basketball, UFC, Taekwondo, Piano, Clash Royale',
             linkedin: 'www.linkedin.com/in/elliotjang',
             calendly: 'https://calendly.com/elliotjang-berkeley/30min',
@@ -423,12 +430,12 @@ function createPortraitImg(member) {
     const primary = resolvePortraitSrc(member);
     let triedLocal = primary === local;
 
-    img.src = primary;
+    img.src = withPreviewCacheBust(primary);
 
     img.addEventListener('error', () => {
         if (!triedLocal) {
             triedLocal = true;
-            img.src = local;
+            img.src = withPreviewCacheBust(local);
             return;
         }
         img.classList.add('team-portrait-img--missing');

@@ -68,7 +68,7 @@ FACE_CASCADE = cv2.CascadeClassifier(
 
 # Per-person crop tuning: face_ratio↑ = zoom in, offset_x↑ = shift subject right,
 # face_y_ratio↑ = move crop down (more face visible when cut off at top).
-CROP_OVERRIDES: dict[str, dict[str, float]] = {
+CROP_OVERRIDES: dict[str, dict] = {
     "katherine-rivas": {
         "manual_center": (0.50, 0.50),
         "crop_height_frac": 1.0,
@@ -80,9 +80,11 @@ CROP_OVERRIDES: dict[str, dict[str, float]] = {
         "face_y_ratio": 0.34,
     },
     "rayhan-jain": {"face_ratio": 0.30, "offset_x": 0.03},
+    "rubin-jain": {"offset_x": -0.01},
     "nidhish-tekkam": {"face_ratio": 0.27},
-    "willie-kang": {"manual_center": (0.50, 0.36), "crop_height_frac": 0.48, "face_y_ratio": 0.34},
+    "willie-kang": {"face_ratio": 0.58, "face_y_ratio": 0.36},
     "alex-black": {"manual_center": (0.50, 0.42), "crop_height_frac": 0.76, "face_y_ratio": 0.38},
+    "arthur-renard": {"face_y_ratio": 0.355},
 }
 
 
@@ -177,14 +179,13 @@ def compute_crop_box(
     offset_x = overrides.get("offset_x", 0.0)
     manual_center = overrides.get("manual_center")
 
-    crop_h = h
-    crop_w = int(round(crop_h * ASPECT))
-
-    if crop_w > w:
+    if overrides.get("anchor_top"):
+        # Max zoom-out: use the full source frame, pinned to the top-left.
         crop_w = w
-        crop_h = int(round(crop_w / ASPECT))
-
-    if manual_center is not None:
+        crop_h = h
+        left = 0
+        top = 0
+    elif manual_center is not None:
         cx_frac, cy_frac = manual_center
         crop_h = int(round(h * overrides.get("crop_height_frac", 0.70)))
         crop_w = int(round(crop_h * ASPECT))
@@ -192,26 +193,34 @@ def compute_crop_box(
         crop_h = min(int(round(crop_w / ASPECT)), h)
         left = int(round(cx_frac * w - crop_w / 2 + offset_x * crop_w))
         top = int(round(cy_frac * h - crop_h * face_y_ratio))
-    elif face is not None:
-        fx, fy, fw, fh = face
-        face_cx = fx + fw / 2
-        face_cy = fy + fh / 2
-
-        crop_h = int(round(fh / desired_face_ratio))
-        crop_w = int(round(crop_h * ASPECT))
-
-        crop_h = min(crop_h, h)
-        crop_w = min(crop_w, w)
-        if crop_w / crop_h > ASPECT:
-            crop_w = int(round(crop_h * ASPECT))
-        else:
-            crop_h = int(round(crop_w / ASPECT))
-
-        left = int(round(face_cx - crop_w / 2 + offset_x * crop_w))
-        top = int(round(face_cy - crop_h * face_y_ratio))
     else:
-        left = int(round((w - crop_w) / 2 + offset_x * crop_w))
-        top = int(round((h - crop_h) * 0.32))
+        if face is not None:
+            fx, fy, fw, fh = face
+            face_cx = fx + fw / 2
+            face_cy = fy + fh / 2
+
+            crop_h = int(round(fh / desired_face_ratio))
+            crop_w = int(round(crop_h * ASPECT))
+
+            crop_h = min(crop_h, h)
+            crop_w = min(crop_w, w)
+            if crop_w / crop_h > ASPECT:
+                crop_w = int(round(crop_h * ASPECT))
+            else:
+                crop_h = int(round(crop_w / ASPECT))
+
+            left = int(round(face_cx - crop_w / 2 + offset_x * crop_w))
+            top = int(round(face_cy - crop_h * face_y_ratio))
+        else:
+            crop_h = h
+            crop_w = int(round(crop_h * ASPECT))
+
+            if crop_w > w:
+                crop_w = w
+                crop_h = int(round(crop_w / ASPECT))
+
+            left = int(round((w - crop_w) / 2 + offset_x * crop_w))
+            top = int(round((h - crop_h) * 0.32))
 
     left = max(0, min(left, w - crop_w))
     top = max(0, min(top, h - crop_h))
