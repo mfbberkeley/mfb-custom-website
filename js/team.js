@@ -78,7 +78,7 @@ const TEAM_MEMBERS = {
             title: 'VP Consulting',
             year: 'Sophomore',
             major: 'Business',
-            hobbies: 'Wushu, Piano, Hiking, Skiing, Cdramas',
+            hobbies: 'Wushu, Piano, Hiking, Skiing, C-Dramas',
             linkedin: 'www.linkedin.com/in/cassia-huang',
             calendly: 'https://calendly.com/cassiahuang1127-berkeley/30min',
         },
