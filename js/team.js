@@ -73,6 +73,15 @@ const TEAM_MEMBERS = {
             linkedin: 'https://www.linkedin.com/in/williekang',
             calendly: 'https://calendly.com/williek-berkeley/30min',
         },
+        {
+            name: 'Cassia Huang',
+            title: 'VP Consulting',
+            year: 'Sophomore',
+            major: 'Business',
+            hobbies: 'Wushu, Piano, Hiking, Skiing, Cdramas',
+            linkedin: 'www.linkedin.com/in/cassia-huang',
+            calendly: 'https://calendly.com/cassiahuang1127-berkeley/30min',
+        },
     ],
     pm: [
         {
@@ -147,6 +156,15 @@ const TEAM_MEMBERS = {
             linkedin: 'https://www.linkedin.com/in/yingyi-zhen/',
             calendly: 'https://calendly.com/yingyizhen03-berkeley/new-meeting',
         },
+        {
+            name: 'Christopher Soriano',
+            title: 'Project Manager',
+            year: 'Sophomore',
+            major: 'Environmental Science',
+            hobbies: 'Badminton, Volleyball, Food, Roblox',
+            linkedin: 'http://www.linkedin.com/in/c-soriano',
+            calendly: 'https://calendly.com/chriss-berkeley/mfb-coffee-chat-w-chris',
+        },
     ],
     chair: [
         {
@@ -184,6 +202,15 @@ const TEAM_MEMBERS = {
             hobbies: 'Guitar, Food, Math',
             linkedin: 'https://www.linkedin.com/in/arthur-m-renard/',
             calendly: 'https://calendly.com/arthur-r-berkeley/30min',
+        },
+        {
+            name: 'Christopher Soriano',
+            title: 'External Chair',
+            year: 'Sophomore',
+            major: 'Environmental Science',
+            hobbies: 'Badminton, Volleyball, Food, Roblox',
+            linkedin: 'http://www.linkedin.com/in/c-soriano',
+            calendly: 'https://calendly.com/chriss-berkeley/mfb-coffee-chat-w-chris',
         },
     ],
     advisor: [
